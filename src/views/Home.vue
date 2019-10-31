@@ -1,18 +1,62 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home" >
+    <p style="position: fixed;top: 30px; left: 50px;font-size: 20px;font-weight: 600;">Vamsi</p>
+    <p
+      style="position: fixed;top: 60px; right: 50px;font-size: 15px;transform: rotate(90deg);font-weight: 600;"
+    >WORKS</p>
+    <p
+      style="position: fixed;bottom: 50px; left: 30px;font-size: 15px;transform: rotate(-90deg);font-weight: 600;"
+    >CONTACT</p>
+    <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset="">
+    <!-- <img src="../assets/main.svg" :style="{ width: posY/2 + 'px', height: posY + 'px' }" alt="" srcset=""> -->
+
+    <!-- <p>{{this.text}}</p>
+    <p>{{this.text2}}</p> -->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  name: "home",
+  data() {
+    return {
+      x: 0,
+      y: 0,
+      posX: 0,
+      posY: 0,
+      // text: '',
+      // text2: '',
+      mouseX: 0,
+      mouseY: 0
+    };
+  },
+  mounted: function() {
+    this.x = window.innerWidth;
+    this.y = window.innerHeight;
+    this.posY  = this.y
+    this.posX =  this.x
+    console.log(this.x, this.y);
+    window.addEventListener('mousemove',this.mouseIsMoving);
+  },
+  components: {},
+  methods: {
+    mouseIsMoving(event) {
+        this.mouseX = event.pageX; 
+        this.mouseY = event.pageY; 
+        var centerX = this.x / 2
+        var centerY  = this.y / 2
+        this.posY = 3*this.y/10 - ((this.mouseY - centerY)/this.y * 20)
+        this.posX =  (this.x - this.$refs.main_img.clientWidth)/2 - ((this.mouseX - centerX)/this.x * 20)
+    }
   }
-}
+};
 </script>
+
+<style scoped>
+
+.ref_img {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+</style>
