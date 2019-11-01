@@ -1,10 +1,10 @@
 <template>
-  <div class="home" >
-    <p class="hoverable" style="position: fixed;top: 10px; left: 30px;font-size: 20px;font-weight: 600;padding: 20px;" >Vamsi</p>
-    <p class="hoverable" style="position: fixed;top: 40px; right: 30px;font-size: 15px;transform: rotate(90deg);font-weight: 600;padding: 20px;" >WORKS</p>
-    <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;font-size: 15px;transform: rotate(-90deg);font-weight: 600;padding: 20px;" >CONTACT</p>
-    <!-- <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset=""> -->
-    <!-- <img src="../assets/main.svg" :style="{ width: posY/2 + 'px', height: posY + 'px' }" alt="" srcset=""> -->
+  <div class="home" style="text-align: center;">
+    <p class="hoverable" style="position: fixed;top: 10px; left: 30px;font-weight: 500;padding: 20px;" >Vamsi</p>
+    <p class="hoverable" style="position: fixed;top: 40px; right: 30px;transform: rotate(90deg);font-weight: 500;padding: 20px;" >Works</p>
+    <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;" >Contact</p>
+    <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset="">
+    <!-- <img src="../assets/main2.png" style="position: fixed;top: 10px; left: 30px;font-size: 20px;width: 50px; height: auto;" alt="" srcset=""> -->
 
     <!-- <p>{{this.text}}</p>
     <p>{{this.text2}}</p> -->
@@ -52,9 +52,8 @@ export default {
 </script>
 
 <style scoped>
-
 .ref_img {
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: ease-in-out;
 }
 
 </style>

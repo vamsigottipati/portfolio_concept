@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div ref="app" id="app">
     <div ref="outline" class="cursor-dot-outline"></div>
     <i ref="dot" class="cursor-dot fas fa-chevron-down"></i>
     <router-view/>
@@ -41,21 +41,26 @@ export default {
           el.addEventListener("mouseover", function() {
             self.cursorEnlarged = true;
             self.toggleCursorSize();
+            // el.style.fontSize = '26px'
+            el.style.color = "black"
           });
           el.addEventListener("mouseout", function() {
             self.cursorEnlarged = false;
             self.toggleCursorSize();
+            // el.style.fontSize = '22px'
+            el.style.color = "white"
           });
         });
 
-        // Click events
-        document.addEventListener("mousedown", function() {
-          self.cursorEnlarged = true;
-          self.toggleCursorSize();
-        });
-        document.addEventListener("mouseup", function() {
-          self.cursorEnlarged = false;
-          self.toggleCursorSize();
+        document.getElementsByClassName("clickable").forEach(function(el) {
+          el.addEventListener("mousedown", function() {
+            self.cursorEnlarged = true;
+            self.toggleCursorSize();
+          });
+          el.addEventListener("mouseup", function() {
+            self.cursorEnlarged = false;
+            self.toggleCursorSize();
+          });
         });
 
         document.addEventListener("mousemove", function(e) {
@@ -102,10 +107,12 @@ export default {
 
         if (self.cursorEnlarged) {
           self.$dot.style.transform = "translate(-50%, -50%) scale(0)";
-          self.$outline.style.border = "1px solid #eee";
+          self.$outline.style.border = "1px solid white";
+          self.$outline.style.background = "white";
           self.$outline.style.transform = "translate(-50%, -50%) scale(2)";
         } else {
           self.$dot.style.transform = "translate(-50%, -50%) scale(1)";
+          self.$outline.style.background = "black";
           self.$outline.style.transform = "translate(-50%, -50%) scale(1)";
           self.$outline.style.border = "2px solid #666";
         }
@@ -132,8 +139,14 @@ export default {
 </script>
 
 <style lang="scss">
+
+@import url("https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900");
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
+  font-family: 'Product Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -142,6 +155,9 @@ export default {
   transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
 }
 
+.hoverable {
+  font-size: 22px;
+}
 
 .cursor-dot,
 .cursor-dot-outline {
