@@ -1,13 +1,9 @@
 <template>
   <div class="home" >
-    <p style="position: fixed;top: 30px; left: 50px;font-size: 20px;font-weight: 600;">Vamsi</p>
-    <p
-      style="position: fixed;top: 60px; right: 50px;font-size: 15px;transform: rotate(90deg);font-weight: 600;"
-    >WORKS</p>
-    <p
-      style="position: fixed;bottom: 50px; left: 30px;font-size: 15px;transform: rotate(-90deg);font-weight: 600;"
-    >CONTACT</p>
-    <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset="">
+    <p class="hoverable" style="position: fixed;top: 10px; left: 30px;font-size: 20px;font-weight: 600;padding: 20px;" >Vamsi</p>
+    <p class="hoverable" style="position: fixed;top: 40px; right: 30px;font-size: 15px;transform: rotate(90deg);font-weight: 600;padding: 20px;" >WORKS</p>
+    <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;font-size: 15px;transform: rotate(-90deg);font-weight: 600;padding: 20px;" >CONTACT</p>
+    <!-- <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset=""> -->
     <!-- <img src="../assets/main.svg" :style="{ width: posY/2 + 'px', height: posY + 'px' }" alt="" srcset=""> -->
 
     <!-- <p>{{this.text}}</p>
@@ -16,6 +12,8 @@
 </template>
 
 <script>
+
+// import { eventBus } from '../eventBus.js';
 
 export default {
   name: "home",

@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <div class="cursor-dot-outline"></div>
-    <div class="cursor-dot"></div>
+    <div ref="outline" class="cursor-dot-outline"></div>
+    <i ref="dot" class="cursor-dot fas fa-chevron-down"></i>
     <router-view/>
   </div>
 </template>
 
 <script>
+
+// import { eventBus } from './eventBus.js';
+
 export default {
   name: 'App',
     mounted: function() {
@@ -34,7 +37,7 @@ export default {
         var self = this;
 
         // Anchor hovering
-        document.querySelectorAll("a").forEach(function(el) {
+        document.getElementsByClassName("hoverable").forEach(function(el) {
           el.addEventListener("mouseover", function() {
             self.cursorEnlarged = true;
             self.toggleCursorSize();
@@ -98,11 +101,13 @@ export default {
         var self = this;
 
         if (self.cursorEnlarged) {
-          self.$dot.style.transform = "translate(-50%, -50%) scale(0.75)";
-          self.$outline.style.transform = "translate(-50%, -50%) scale(1.5)";
+          self.$dot.style.transform = "translate(-50%, -50%) scale(0)";
+          self.$outline.style.border = "1px solid #eee";
+          self.$outline.style.transform = "translate(-50%, -50%) scale(2)";
         } else {
           self.$dot.style.transform = "translate(-50%, -50%) scale(1)";
           self.$outline.style.transform = "translate(-50%, -50%) scale(1)";
+          self.$outline.style.border = "2px solid #666";
         }
       },
 
@@ -120,6 +125,8 @@ export default {
     };
 
     cursor.init();
+  },
+  methods: {
   }
 }
 </script>
@@ -135,18 +142,7 @@ export default {
   transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
 }
 
-#nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 .cursor-dot,
 .cursor-dot-outline {
   pointer-events: none;
@@ -164,9 +160,9 @@ export default {
 }
 
 .cursor-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #aaa;
+  width: 12px;
+  height: 12px;
+  color: #aaa;
 }
 
 .cursor-dot-outline {
