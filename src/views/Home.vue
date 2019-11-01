@@ -1,11 +1,11 @@
 <template>
   <div class="home" style="text-align: center;">
-    <p class="hoverable" style="position: fixed;top: 10px; left: 30px;font-weight: 500;padding: 20px;" >Vamsi</p>
-    <p class="hoverable" style="position: fixed;top: 40px; right: 30px;transform: rotate(90deg);font-weight: 500;padding: 20px;" >Works</p>
-    <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;" >Contact</p>
-    <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset="">
+    <!-- <p class="hoverable" style="position: fixed;top: 10px; left: 30px;font-weight: 500;padding: 20px;z-index:990" >Vamsi</p> -->
+    <p class="hoverable" style="position: fixed;top: 40px; right: 30px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;" >Works</p>
+    <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;" >Contact</p>
+    <!-- <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset=""> -->
     <!-- <img src="../assets/main2.png" style="position: fixed;top: 10px; left: 30px;font-size: 20px;width: 50px; height: auto;" alt="" srcset=""> -->
-
+    <div class="main_box"></div>
     <!-- <p>{{this.text}}</p>
     <p>{{this.text2}}</p> -->
   </div>
@@ -54,6 +54,15 @@ export default {
 <style scoped>
 .ref_img {
   transition: ease-in-out;
+}
+.main_box {
+  position: absolute;
+  top: 8vh;
+  height: 84vh;
+  width: 48vw;
+  left: 2vw;
+  background: #012c88;
+  z-index: 90;
 }
 
 </style>

@@ -112,7 +112,7 @@ export default {
           self.$outline.style.transform = "translate(-50%, -50%) scale(2)";
         } else {
           self.$dot.style.transform = "translate(-50%, -50%) scale(1)";
-          self.$outline.style.background = "black";
+          self.$outline.style.background = "transparent";
           self.$outline.style.transform = "translate(-50%, -50%) scale(1)";
           self.$outline.style.border = "2px solid #666";
         }
@@ -156,13 +156,14 @@ export default {
 }
 
 .hoverable {
-  font-size: 22px;
+  font-size: 30px;
 }
 
 .cursor-dot,
 .cursor-dot-outline {
   pointer-events: none;
   position: absolute;
+  z-index: 990;
   top: 50%;
   left: 50%;
   border-radius: 50%;
