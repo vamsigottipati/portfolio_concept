@@ -1,13 +1,10 @@
 <template>
-  <div class="home" style="text-align: center;">
-    <!-- <p class="hoverable" style="position: fixed;top: 10px; left: 30px;font-weight: 500;padding: 20px;z-index:990" >Vamsi</p> -->
-    <p class="hoverable" style="position: fixed;top: 40px; right: 30px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;" >Works</p>
+  <div class="home" ref="home_cont" style="text-align: center;overflow-x: hidden;">
+    <p class="hoverable" style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;" >Works</p>
     <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;" >Contact</p>
-    <!-- <img src="../assets/main.png" class="ref_img" ref="main_img" :style="{ position: 'absolute', width: 'auto', height: 2*y/5 + 'px', top: posY + 'px', left: posX + 'px' }" alt="" srcset=""> -->
-    <!-- <img src="../assets/main2.png" style="position: fixed;top: 10px; left: 30px;font-size: 20px;width: 50px; height: auto;" alt="" srcset=""> -->
-    <div class="main_box"></div>
-    <!-- <p>{{this.text}}</p>
-    <p>{{this.text2}}</p> -->
+    <div ref="main_box" class="main_box"></div>
+    <!-- <div ref="overlay" class="overlay"></div> -->
+    <p ref="main_text" class="main_text" >Vamsi <br> Krishna</p>
   </div>
 </template>
 
@@ -23,10 +20,11 @@ export default {
       y: 0,
       posX: 0,
       posY: 0,
-      // text: '',
-      // text2: '',
       mouseX: 0,
-      mouseY: 0
+      mouseY: 0,
+      scrollCount: 0,
+      marLeft: 2,
+      stage: 0
     };
   },
   mounted: function() {
@@ -34,18 +32,113 @@ export default {
     this.y = window.innerHeight;
     this.posY  = this.y
     this.posX =  this.x
-    console.log(this.x, this.y);
+    console.log(this.y)
     window.addEventListener('mousemove',this.mouseIsMoving);
+    window.addEventListener('mousewheel',this.mouseIsScrolling);
   },
   components: {},
   methods: {
     mouseIsMoving(event) {
         this.mouseX = event.pageX; 
         this.mouseY = event.pageY; 
-        var centerX = this.x / 2
-        var centerY  = this.y / 2
-        this.posY = 3*this.y/10 - ((this.mouseY - centerY)/this.y * 20)
-        this.posX =  (this.x - this.$refs.main_img.clientWidth)/2 - ((this.mouseX - centerX)/this.x * 20)
+        // var centerX = this.x / 2
+        // var centerY  = this.y / 2
+        // this.posY = 3*this.y/10 - ((this.mouseY - centerY)/this.y * 20)
+        // this.posX =  (this.x - this.$refs.main_img.clientWidth)/2 - ((this.mouseX - centerX)/this.x * 20)
+        // this.posY = ((this.mouseY - centerY)/this.y * 20)
+        // this.posX = ((this.mouseX - centerX)/this.x * 20)
+        // this.$refs.main_text.style.top = (((26/100*this.y) - ((this.mouseY - centerY)/this.y * 5)) + 'px')
+        // this.$refs.main_text.style.left = (((32/100*this.x) - ((this.mouseX - centerX)/this.x * 5)) + 'px')
+    },
+    mouseIsScrolling (event) {
+      console.log(this.stage)
+      if(this.stage == 0) {
+
+        if(event.deltaY > 0) {
+          this.scrollCount = this.scrollCount + 2
+          if(this.scrollCount >= 46) {
+            this.stage = 1
+            this.scrollCount = 46
+            this.$refs.main_box.style.width = '96vw'
+          } else {
+            this.$refs.main_box.style.width = 50 + this.scrollCount + 'vw'
+          }
+        } else {
+          this.scrollCount = this.scrollCount - 2
+          if(this.scrollCount <= 0) {
+            this.scrollCount = 0
+            this.$refs.main_box.style.width = '50vw'
+          } else {
+            this.$refs.main_box.style.width = 50 + this.scrollCount + 'vw'
+          }
+        }
+
+      } else {
+        if(this.stage == 1) {
+
+          if(event.deltaY > 0) {
+            this.marLeft = this.marLeft + 2
+            if(this.marLeft >= 50) {
+              // this.stage = 2
+              this.marLeft = 50
+              this.scrollCount = -2
+              this.$refs.main_box.style.width = '48vw'
+              this.$refs.main_box.style.left = '50vw'
+            } else {
+              this.$refs.main_box.style.left = this.marLeft + 'vw'
+              this.scrollCount = 48 - this.marLeft
+              this.$refs.main_box.style.width = 50 + this.scrollCount + 'vw'
+            }
+          } else {
+            this.marLeft = this.marLeft - 2
+            if(this.marLeft <= 2) {
+              this.stage = 0
+              this.marLeft  = 2
+              this.scrollCount = 48
+              this.$refs.main_box.style.left = '2vw'
+              this.$refs.main_box.style.width = '96vw'
+            } else {
+              this.scrollCount = this.scrollCount + 2
+              this.$refs.main_box.style.width = 50 + this.scrollCount + 'vw'
+              this.$refs.main_box.style.left = this.marLeft + 'vw'
+            }
+          }
+
+        }
+      }
+
+
+
+
+
+
+      // if (event.deltaY > 0) {
+      //   if(this.scrollCount >= 46) {
+      //     console.log('yoyoyoyoyoyoy')
+      //     if(this.marLeft < 50) {
+      //       this.marLeft = this.marLeft + 2
+      //       this.$refs.main_box.style.width = this.scrollCount + 50 - this.marLeft + 'vw'
+      //       this.$refs.main_box.style.left = this.marLeft + 'vw'
+      //     }
+      //   } else {
+      //     this.scrollCount = this.scrollCount+2
+      //     this.$refs.main_box.style.width = this.scrollCount + 50 + 'vw'
+      //   }
+      // } else {
+      //   if(this.scrollCount >= 46) {
+      //     console.log('yoyoyoyoyoyoy')
+      //     if(this.marLeft < 50 && this.marLeft > 2) {
+      //       this.marLeft = this.marLeft - 2
+      //       this.$refs.main_box.style.width = this.scrollCount + 50 - this.marLeft + 'vw'
+      //       this.$refs.main_box.style.left = this.marLeft + 'vw'
+      //     }
+      //   } else {
+      //     if(this.scrollCount > 0) {
+      //       this.scrollCount = this.scrollCount-2
+      //       this.$refs.main_box.style.width = this.scrollCount + 50 + 'vw'
+      //     }
+      //   }
+      // }
     }
   }
 };
@@ -56,13 +149,34 @@ export default {
   transition: ease-in-out;
 }
 .main_box {
-  position: absolute;
+  position: fixed;
   top: 8vh;
   height: 84vh;
   width: 48vw;
   left: 2vw;
   background: #012c88;
-  z-index: 90;
+  z-index: 900;
+}
+.main_text {
+  position: fixed;
+  padding: 0px; 
+  margin: 0px;
+  text-align: left;
+  font-weight: 900;
+  color: white;
+  z-index: 992;
+  top: 26vh;
+  left: 32vw;
+  font-size: 20vh;
+  transition-timing-function: ease-in-out;
+}
+.overlay {
+  position: absolute;
+  z-index:90;
+  background: transparent;
+  top: 0px; left: 0px;
+  height: 350vh;
+  width: 100vw;
 }
 
 </style>
