@@ -3,7 +3,7 @@
     <p class="hoverable" style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;" >Works</p>
     <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;" >Contact</p>
     <div ref="main_box" class="main_box"></div>
-    <!-- <div ref="overlay" class="overlay"></div> -->
+    <div ref="overlay" class="overlay"></div>
     <p ref="main_text" class="main_text" >Vamsi <br> Krishna</p>
   </div>
 </template>
@@ -24,7 +24,8 @@ export default {
       mouseY: 0,
       scrollCount: 0,
       marLeft: 2,
-      stage: 0
+      stage: 0,
+      lastScrollTop: 0
     };
   },
   mounted: function() {
@@ -34,7 +35,8 @@ export default {
     this.posX =  this.x
     console.log(this.y)
     window.addEventListener('mousemove',this.mouseIsMoving);
-    window.addEventListener('mousewheel',this.mouseIsScrolling);
+    // window.addEventListener('scroll',this.a);
+    window.addEventListener("scroll", this.mouseIsScrolling);
   },
   components: {},
   methods: {
@@ -50,11 +52,12 @@ export default {
         // this.$refs.main_text.style.top = (((26/100*this.y) - ((this.mouseY - centerY)/this.y * 5)) + 'px')
         // this.$refs.main_text.style.left = (((32/100*this.x) - ((this.mouseX - centerX)/this.x * 5)) + 'px')
     },
-    mouseIsScrolling (event) {
+    mouseIsScrolling () {
       console.log(this.stage)
+      var st = window.pageYOffset || document.body.scrollTop; 
       if(this.stage == 0) {
 
-        if(event.deltaY > 0) {
+        if(st > this.lastScrollTop) {
           this.scrollCount = this.scrollCount + 2
           if(this.scrollCount >= 46) {
             this.stage = 1
@@ -76,7 +79,7 @@ export default {
       } else {
         if(this.stage == 1) {
 
-          if(event.deltaY > 0) {
+          if(st > this.lastScrollTop) {
             this.marLeft = this.marLeft + 2
             if(this.marLeft >= 50) {
               // this.stage = 2
@@ -106,39 +109,6 @@ export default {
 
         }
       }
-
-
-
-
-
-
-      // if (event.deltaY > 0) {
-      //   if(this.scrollCount >= 46) {
-      //     console.log('yoyoyoyoyoyoy')
-      //     if(this.marLeft < 50) {
-      //       this.marLeft = this.marLeft + 2
-      //       this.$refs.main_box.style.width = this.scrollCount + 50 - this.marLeft + 'vw'
-      //       this.$refs.main_box.style.left = this.marLeft + 'vw'
-      //     }
-      //   } else {
-      //     this.scrollCount = this.scrollCount+2
-      //     this.$refs.main_box.style.width = this.scrollCount + 50 + 'vw'
-      //   }
-      // } else {
-      //   if(this.scrollCount >= 46) {
-      //     console.log('yoyoyoyoyoyoy')
-      //     if(this.marLeft < 50 && this.marLeft > 2) {
-      //       this.marLeft = this.marLeft - 2
-      //       this.$refs.main_box.style.width = this.scrollCount + 50 - this.marLeft + 'vw'
-      //       this.$refs.main_box.style.left = this.marLeft + 'vw'
-      //     }
-      //   } else {
-      //     if(this.scrollCount > 0) {
-      //       this.scrollCount = this.scrollCount-2
-      //       this.$refs.main_box.style.width = this.scrollCount + 50 + 'vw'
-      //     }
-      //   }
-      // }
     }
   }
 };
