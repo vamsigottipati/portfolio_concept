@@ -42,26 +42,8 @@ export default {
         this.mouseY = event.pageY; 
     },
     mouseIsScrolling () {
-      console.log(this.stage)
-      var st = window.pageYOffset || document.body.scrollTop; 
-      if(this.stage == 0) {
-        if(st > this.lastScrollTop) {
-            
-        } else {
-
-        }
-
-      } else {
-        if(this.stage == 1) {
-
-          if(st > this.lastScrollTop) {
-
-          } else {
-
-          }
-
-        }
-      }
+        console.log(window.pageYOffset / this.y)
+        
     }
   }
 };
