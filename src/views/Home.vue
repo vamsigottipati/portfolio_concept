@@ -10,6 +10,9 @@
       <div ref="secondary_text_cont" class="secondary_text_cont">
           <p ref="secondary_text" class="secondary_text" >Developer <br> <strong>Designer</strong>  </p>
       </div>
+      <div ref="teritiary_text_cont" class="teritiary_text_cont">
+          <p ref="teritiary_text" class="teritiary_text" > Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur labore, culpa accusamus repudiandae nesciunt pariatur! Voluptates vero laudantium animi. Amet? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur labore, culpa accusamus repudiandae nesciunt pariatur! Voluptates vero laudantium animi. Amet? </p>
+      </div>
     </div>
   </template>
   
@@ -83,13 +86,27 @@
             if(this.secondaryTextMarTop <= 0) {
               this.secondaryTextMarTop = 0
               console.log((145 - ((widthRed * 100) / 0.75)) * 1.5)
-              this.$refs.secondary_text_cont.style.left = ((145 - ((widthRed * 100) / 0.75)) * 1.1) + 'vw'
+              this.secondaryTextMarLeft = ((145 - ((widthRed * 100) / 0.65)) * 1.1)
+              this.$refs.secondary_text_cont.style.left = ((145 - ((widthRed * 100) / 0.75)) * 0.65) + 'vw'
             } else {
               this.$refs.secondary_text_cont.style.top = (145 - ((widthRed * 100) / 0.75)) * 1.5 + 'vh'
             }
           } else {
             this.secondaryTextMarTop = 100
             this.$refs.secondary_text_cont.style.top = "100vh"
+          }
+
+
+          // teritiary text
+
+          if(((145 - ((widthRed * 100) / 0.75)) * 1.1) < -130) {
+            this.$refs.teritiary_text_cont.style.opacity = '1'
+          } else {
+            this.$refs.teritiary_text_cont.style.opacity = '0'
+          }
+
+          if(widthRed > 2.5) {
+            this.$refs.teritiary_text_cont.style.opacity = '0'
           }
 
         }
@@ -109,6 +126,29 @@
     left: 2vw;
     background: linear-gradient(0deg, #0038b1, #012c88);
     z-index: 900;
+  }
+  .teritiary_text_cont {
+    position: fixed;
+    padding: 0px; 
+    margin: 0px;
+    z-index: 901;
+    top: 0vh;
+    left: 0vw;
+    height: 100vh;
+    width: 100vw;
+    display: flex; flex-direction: column;
+    opacity: 0;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .teritiary_text {
+    padding: 10vw; 
+    margin: auto;
+    text-align: left;
+    font-weight: 900;
+    color: white;
+    font-size: 2.2rem;
+    transition-timing-function: ease-in-out;
   }
   .secondary_text_cont {
     position: fixed;
