@@ -1,5 +1,5 @@
 <template>
-    <div class="home" ref="home_cont" style="text-align: center;overflow-x: hidden;">
+    <div class="home clickable" ref="home_cont" style="text-align: center;overflow-x: hidden;">
       <p class="hoverable" style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;" >Works</p>
       <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;" >Contact</p>
       <div ref="main_box" class="main_box"></div>
@@ -75,7 +75,7 @@
     position: absolute;
     padding: 0px; 
     margin: 0px;
-    z-index: 992;
+    z-index: 901;
     top: 0vh;
     left: 0vw;
     height: 100vh;

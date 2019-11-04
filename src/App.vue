@@ -35,7 +35,6 @@ export default {
 
       setupEventListeners: function() {
         var self = this;
-
         // Anchor hovering
         document.getElementsByClassName("hoverable").forEach(function(el) {
           el.addEventListener("mouseover", function() {
