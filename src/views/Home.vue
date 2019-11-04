@@ -4,7 +4,9 @@
       <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;" >Contact</p>
       <div ref="main_box" class="main_box"></div>
       <div ref="overlay" class="overlay"></div>
-      <p ref="main_text" class="main_text" >Vamsi <br> Krishna</p>
+      <div class="main_text_cont">
+          <p ref="main_text" class="main_text" >Vamsi <br> Krishna</p>
+      </div>
     </div>
   </template>
   
@@ -66,20 +68,27 @@
     height: 84vh;
     width: 48vw;
     left: 2vw;
-    background: #012c88;
+    background: linear-gradient(0deg, #0038b1, #012c88);
     z-index: 900;
   }
-  .main_text {
+  .main_text_cont {
     position: absolute;
     padding: 0px; 
     margin: 0px;
+    z-index: 992;
+    top: 0vh;
+    left: 0vw;
+    height: 100vh;
+    width: 100vw;
+    display: flex; flex-direction: column;
+  }
+  .main_text {
+    padding: 0px; 
+    margin: auto;
     text-align: left;
     font-weight: 900;
     color: white;
-    z-index: 992;
-    top: 26vh;
-    left: 32vw;
-    font-size: 20vh;
+    font-size: 12rem;
     transition-timing-function: ease-in-out;
   }
   .overlay {
