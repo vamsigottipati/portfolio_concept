@@ -105,7 +105,7 @@
             this.$refs.teritiary_text_cont.style.opacity = '0'
           }
 
-          if(widthRed > 2.5) {
+          if(widthRed > 3) {
             this.$refs.teritiary_text_cont.style.opacity = '0'
           }
 
@@ -142,12 +142,12 @@
   }
 
   .teritiary_text {
-    padding: 10vw; 
+    padding: 15vw; 
     margin: auto;
     text-align: left;
     font-weight: 900;
     color: white;
-    font-size: 2.2rem;
+    font-size: 2rem;
     transition-timing-function: ease-in-out;
   }
   .secondary_text_cont {
@@ -167,7 +167,7 @@
     text-align: left;
     font-weight: 900;
     color: white;
-    font-size: 7rem;
+    font-size: 6rem;
     transition-timing-function: ease-in-out;
   }
   .main_text_cont {
@@ -187,7 +187,7 @@
     text-align: left;
     font-weight: 900;
     color: white;
-    font-size: 12rem;
+    font-size: 6rem;
     transition-timing-function: ease-in-out;
   }
   .overlay {
