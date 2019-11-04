@@ -1,10 +1,10 @@
 <template>
-    <div class="home clickable" ref="home_cont" style="text-align: center;overflow-x: hidden;">
+    <div class="home" ref="home_cont" style="text-align: center;overflow-x: hidden;">
       <p class="hoverable" style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;" >Works</p>
       <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;" >Contact</p>
       <div ref="main_box" class="main_box"></div>
       <div ref="overlay" class="overlay"></div>
-      <div class="main_text_cont">
+      <div ref="main_text_cont" class="main_text_cont">
           <p ref="main_text" class="main_text" >Vamsi <br> Krishna</p>
       </div>
     </div>
@@ -24,6 +24,7 @@
         mouseY: 0,
         marLeft: 2,
         boxWidth: 48,
+        mainTextMarLeft: 0,
         stage: 0,
         lastScrollTop: 0
       };
@@ -44,7 +45,6 @@
           this.mouseY = event.pageY; 
       },
       mouseIsScrolling () {
-          console.log(window.pageYOffset / this.y)
           var widthRed = window.pageYOffset / this.y
           var addWidth = ((widthRed * 48) / 2.018)
           this.boxWidth = 48 + addWidth
@@ -53,7 +53,14 @@
           } else {
             this.$refs.main_box.style.width = 48 + addWidth + 'vw'
           }
-      }
+          var addLeft = (((widthRed * 100) / 1.018))
+          this.mainTextMarLeft = addLeft
+          if(this.mainTextMarLeft >= 100) {
+            this.$refs.main_text_cont.style.left = '100vw'
+          } else {
+            this.$refs.main_text_cont.style.left = this.mainTextMarLeft + 'vw'
+          }
+        }
     }
   };
   </script>
@@ -72,7 +79,7 @@
     z-index: 900;
   }
   .main_text_cont {
-    position: absolute;
+    position: fixed;
     padding: 0px; 
     margin: 0px;
     z-index: 901;
