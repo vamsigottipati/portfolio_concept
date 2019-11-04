@@ -50,7 +50,11 @@
           this.boxWidth = 48 + addWidth
           if(this.boxWidth >= 96) {
             this.$refs.main_box.style.width = '96vw'
+            this.$refs.main_box.style.position = "absolute"
+            this.$refs.main_box.style.top = "208vh"
           } else {
+            this.$refs.main_box.style.position = "fixed"
+            this.$refs.main_box.style.top = "8vh"
             this.$refs.main_box.style.width = 48 + addWidth + 'vw'
           }
           var addLeft = (((widthRed * 100) / 1.018))
@@ -103,7 +107,7 @@
     z-index:90;
     background: transparent;
     top: 0px; left: 0px;
-    height: 300vh;
+    height: 500vh;
     width: 100vw;
   }
   
