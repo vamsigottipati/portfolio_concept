@@ -28,8 +28,10 @@
         marLeft: 2,
         boxWidth: 48,
         mainTextMarLeft: 0,
+        secondaryTextMarTop: 100,
         stage: 0,
-        lastScrollTop: 0
+        lastScrollTop: 0,
+        secondaryTextMarLeft: 0,
       };
     },
     mounted: function() {
@@ -76,9 +78,17 @@
 
           // sencondary text
 
-          if(((widthRed * 100) / 1.018) >= 95) {
-            this.$refs.secondary_text_cont.style.top = (145 - ((widthRed * 100) / 1.018)) * 2 + 'vh'
+          if(((widthRed * 100) / 0.75) >= 95) {
+            this.secondaryTextMarTop = (145 - ((widthRed * 100) / 0.75)) * 1.5
+            if(this.secondaryTextMarTop <= 0) {
+              this.secondaryTextMarTop = 0
+              console.log((145 - ((widthRed * 100) / 0.75)) * 1.5)
+              this.$refs.secondary_text_cont.style.left = ((145 - ((widthRed * 100) / 0.75)) * 1.1) + 'vw'
+            } else {
+              this.$refs.secondary_text_cont.style.top = (145 - ((widthRed * 100) / 0.75)) * 1.5 + 'vh'
+            }
           } else {
+            this.secondaryTextMarTop = 100
             this.$refs.secondary_text_cont.style.top = "100vh"
           }
 
