@@ -20,8 +20,8 @@ export default {
       posY: 0,
       mouseX: 0,
       mouseY: 0,
-      scrollCount: 0,
       marLeft: 2,
+      boxWidth: 48,
       stage: 0,
       lastScrollTop: 0
     };
@@ -43,7 +43,14 @@ export default {
     },
     mouseIsScrolling () {
         console.log(window.pageYOffset / this.y)
-        
+        var widthRed = window.pageYOffset / this.y
+        var addWidth = ((widthRed * 48) / 2.018)
+        this.boxWidth = 48 + addWidth
+        if(this.boxWidth >= 96) {
+          this.$refs.main_box.style.width = '96vw'
+        } else {
+          this.$refs.main_box.style.width = 48 + addWidth + 'vw'
+        }
     }
   }
 };
@@ -80,7 +87,7 @@ export default {
   z-index:90;
   background: transparent;
   top: 0px; left: 0px;
-  height: 350vh;
+  height: 300vh;
   width: 100vw;
 }
 
