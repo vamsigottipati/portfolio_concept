@@ -7,6 +7,9 @@
       <div ref="main_text_cont" class="main_text_cont">
           <p ref="main_text" class="main_text" >Vamsi <br> Krishna</p>
       </div>
+      <div ref="secondary_text_cont" class="secondary_text_cont">
+          <p ref="secondary_text" class="secondary_text" >Developer <br> <strong>Designer</strong>  </p>
+      </div>
     </div>
   </template>
   
@@ -46,6 +49,9 @@
       },
       mouseIsScrolling () {
           var widthRed = window.pageYOffset / this.y
+          
+          // box movement
+
           var addWidth = ((widthRed * 48) / 2.018)
           this.boxWidth = 48 + addWidth
           if(this.boxWidth >= 96) {
@@ -57,13 +63,25 @@
             this.$refs.main_box.style.top = "8vh"
             this.$refs.main_box.style.width = 48 + addWidth + 'vw'
           }
+
+          // text movement
+
           var addLeft = (((widthRed * 100) / 1.018))
           this.mainTextMarLeft = addLeft
           if(this.mainTextMarLeft >= 100) {
             this.$refs.main_text_cont.style.left = '100vw'
           } else {
-            this.$refs.main_text_cont.style.left = this.mainTextMarLeft + 'vw'
+            this.$refs.main_text_cont.style.left = "" + this.mainTextMarLeft + 'vw'
           }
+
+          // sencondary text
+
+          if(((widthRed * 100) / 1.018) >= 95) {
+            this.$refs.secondary_text_cont.style.top = (145 - ((widthRed * 100) / 1.018)) * 2 + 'vh'
+          } else {
+            this.$refs.secondary_text_cont.style.top = "100vh"
+          }
+
         }
     }
   };
@@ -81,6 +99,26 @@
     left: 2vw;
     background: linear-gradient(0deg, #0038b1, #012c88);
     z-index: 900;
+  }
+  .secondary_text_cont {
+    position: fixed;
+    padding: 0px; 
+    margin: 0px;
+    z-index: 901;
+    top: 100vh;
+    left: 0vw;
+    height: 100vh;
+    width: 100vw;
+    display: flex; flex-direction: column;
+  }
+  .secondary_text {
+    padding: 0px; 
+    margin: auto;
+    text-align: left;
+    font-weight: 900;
+    color: white;
+    font-size: 7rem;
+    transition-timing-function: ease-in-out;
   }
   .main_text_cont {
     position: fixed;
