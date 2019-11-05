@@ -15,7 +15,7 @@
       </div>
 
       <div ref="ending_text_cont" class="ending_text_cont">
-          <p ref="ending_text" class="ending_text" > Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati  </p>
+          <p ref="ending_text" class="ending_text" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolor expedita ab dolore quaerat animi quam sunt dolorem nulla modi inventore tempore nesciunt sapiente veniam, labore quo, doloribus perferendis? Iusto consectetur velit ad officia nostrum error nam facilis ipsam voluptas omnis quibusdam pariatur veniam, ut nobis similique doloremque aliquid accusamus corrupti voluptatibus. A, asperiores repellat dolor nemo voluptatibus soluta in. </p>
       </div>
     </div>
   </template>
@@ -55,6 +55,8 @@
       mouseIsMoving(event) {
           this.mouseX = event.pageX; 
           this.mouseY = event.pageY; 
+          // this.$refs.main_box.style.top = (8/100*this.y) - ((this.mouseY - (this.y/2))/this.y * 15) + 'px'
+          // this.$refs.main_box.style.left = (2/100*this.x) - ((this.mouseX - (this.x/2))/this.x * 15) + 'px'
       },
       mouseIsScrolling () {
           var widthRed = window.pageYOffset / this.y
