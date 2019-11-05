@@ -13,6 +13,10 @@
       <div ref="teritiary_text_cont" class="teritiary_text_cont">
           <p ref="teritiary_text" class="teritiary_text" > Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur labore, culpa accusamus repudiandae nesciunt pariatur! Voluptates vero laudantium animi. Amet? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur labore, culpa accusamus repudiandae nesciunt pariatur! Voluptates vero laudantium animi. Amet? </p>
       </div>
+
+      <div ref="ending_text_cont" class="ending_text_cont">
+          <p ref="ending_text" class="ending_text" > Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati Vamsi gottipati  </p>
+      </div>
     </div>
   </template>
   
@@ -83,14 +87,14 @@
 
           if(((widthRed * 100) / 0.75) >= 95) {
             this.secondaryTextMarTop = (145 - ((widthRed * 100) / 0.75)) * 1.5
-            if(this.secondaryTextMarTop <= 0) {
-              this.secondaryTextMarTop = 0
-              console.log((145 - ((widthRed * 100) / 0.75)) * 1.5)
-              this.secondaryTextMarLeft = ((145 - ((widthRed * 100) / 0.65)) * 1.1)
-              this.$refs.secondary_text_cont.style.left = ((145 - ((widthRed * 100) / 0.75)) * 0.65) + 'vw'
-            } else {
+            // if(this.secondaryTextMarTop <= 0) {
+            //   this.secondaryTextMarTop = 0
+            //   console.log((145 - ((widthRed * 100) / 0.75)) * 1.5)
+            //   this.secondaryTextMarLeft = ((145 - ((widthRed * 100) / 0.65)) * 1.1)
+            //   this.$refs.secondary_text_cont.style.left = ((145 - ((widthRed * 100) / 0.75)) * 0.65) + 'vw'
+            // } else {
               this.$refs.secondary_text_cont.style.top = (145 - ((widthRed * 100) / 0.75)) * 1.5 + 'vh'
-            }
+            // }
           } else {
             this.secondaryTextMarTop = 100
             this.$refs.secondary_text_cont.style.top = "100vh"
@@ -99,15 +103,21 @@
 
           // teritiary text
 
-          if(((145 - ((widthRed * 100) / 0.75)) * 1.1) < -130) {
+          if((widthRed > 1.5) && (widthRed < 2.5)) {
             this.$refs.teritiary_text_cont.style.opacity = '1'
           } else {
             this.$refs.teritiary_text_cont.style.opacity = '0'
           }
 
-          if(widthRed > 3) {
-            this.$refs.teritiary_text_cont.style.opacity = '0'
+          // ending text
+
+          if((widthRed > 2.8) && (widthRed < 3.8)) {
+            this.$refs.ending_text_cont.style.opacity = '1'
+          } else {
+            this.$refs.ending_text_cont.style.opacity = '0'
           }
+
+          console.log(widthRed)
 
         }
     }
@@ -126,6 +136,29 @@
     left: 2vw;
     background: linear-gradient(0deg, #0038b1, #012c88);
     z-index: 900;
+  }
+  .ending_text_cont {
+    position: fixed;
+    padding: 0px; 
+    margin: 0px;
+    z-index: 901;
+    top: 0vh;
+    left: 0vw;
+    height: 100vh;
+    width: 100vw;
+    display: flex; flex-direction: column;
+    opacity: 0;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .ending_text{
+    padding: 15vw; 
+    margin: auto;
+    text-align: left;
+    font-weight: 900;
+    color: white;
+    font-size: 2rem;
+    transition-timing-function: ease-in-out;
   }
   .teritiary_text_cont {
     position: fixed;
@@ -195,7 +228,7 @@
     z-index:90;
     background: transparent;
     top: 0px; left: 0px;
-    height: 500vh;
+    height: 550vh;
     width: 100vw;
   }
   
