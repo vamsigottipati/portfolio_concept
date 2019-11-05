@@ -2,7 +2,25 @@
   <div ref="app" id="app">
     <div ref="outline" class="cursor-dot-outline"></div>
     <i ref="dot" class="cursor-dot fas fa-chevron-down"></i>
-    <router-view/>
+    <div class="rv" ref="rv">
+        <router-view />
+    </div>
+    <div class="loader_cont" ref="loader_cont" style="color: white; font-size: 3rem;transition: 0.5s;">
+      <div class="loader">
+        <div class="obj">
+          <div class="ball"></div>
+          <!-- <div class="shadow"></div> -->
+        </div>
+        <div class="obj">
+          <div class="ball"></div>
+          <!-- <div class="shadow"></div> -->
+        </div>
+        <div class="obj">
+          <div class="ball"></div>
+          <!-- <div class="shadow"></div> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,6 +31,13 @@
 export default {
   name: 'App',
     mounted: function() {
+    setTimeout(() => {
+      this.$refs.loader_cont.style.opacity = '0'
+      setTimeout(() => {
+        this.$refs.loader_cont.style.display = 'none'
+        this.$refs.rv.style.opacity = '1'
+      }, 600);
+    }, 3000);
     var cursor = {
       delay: 8,
       _x: 0,
@@ -154,8 +179,17 @@ export default {
   transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
 }
 
+.focusIn {
+	-webkit-animation: focusIn 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: focusIn 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
 .hoverable {
   font-size: 30px;
+}
+.rv {
+  transition: 0.5s;
+  opacity: 0;
 }
 
 .cursor-dot,
@@ -187,4 +221,108 @@ export default {
   background-color: transparent;
   border: 2px solid #666;
 }
+
+
+/* loader */
+
+.loader {
+  position: fixed;
+  top: calc(50vh - 67.5px);
+  left: calc(50vw - 100px);
+  height: 135px;
+  width: 200px;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.obj {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.ball{
+  width: 15px; height: 65px; border-radius: 0%;
+  background: white;
+  align-self: center;
+}
+.shadow {
+  width: 40px; height: 15px; border-radius: 0%;
+  background: #666;
+  margin-right: 20px;
+  margin-top: 20px;
+  align-self: center;
+}
+
+.obj:first-of-type{
+	-webkit-animation: moveUp 2s ease-in-out infinite alternate both;
+    animation: moveUp 1s ease-in-out infinite alternate both;
+  animation-delay: 0s;
+}
+
+.obj:nth-of-type(2){
+	-webkit-animation: moveUp 2s ease-in-out infinite alternate both;
+    animation: moveUp 1s ease-in-out infinite alternate both;
+  animation-delay: 0.3s;
+}
+
+.obj:last-of-type{
+	-webkit-animation: moveUp 2s ease-in-out infinite alternate both;
+    animation: moveUp 1s ease-in-out infinite alternate both;
+  animation-delay: 0.6s;
+}
+
+ @-webkit-keyframes moveUp {
+  0% {
+    transform: scaleY(0.5)
+  }
+  50% {
+    transform: scaleY(1.2)
+  }
+  100% {
+    transform: scaleY(0.5)
+  }
+}
+@keyframes moveUp {
+  0% {
+    transform: scaleY(0.5)
+  }
+  50% {
+    transform: scaleY(1.2)
+  }
+  100% {
+    transform: scaleY(0.5)
+  }
+}
+
+ @-webkit-keyframes focusIn {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes focusIn {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+
 </style>

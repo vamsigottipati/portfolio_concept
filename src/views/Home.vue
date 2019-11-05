@@ -10,13 +10,21 @@
       <div ref="secondary_text_cont" class="secondary_text_cont">
           <p ref="secondary_text" class="secondary_text" >Developer <br> <strong>Designer</strong>  </p>
       </div>
+      <div class="contact_overlay"></div>
       <div ref="teritiary_text_cont" class="teritiary_text_cont">
-          <p ref="teritiary_text" class="teritiary_text" > Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur labore, culpa accusamus repudiandae nesciunt pariatur! Voluptates vero laudantium animi. Amet? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur labore, culpa accusamus repudiandae nesciunt pariatur! Voluptates vero laudantium animi. Amet? </p>
+          <p ref="teritiary_text" class="teritiary_text" >I’m a developer who focuses mainly on visual aspects of an application with
+              profound knowledge in full stack web development, hybrid app development,
+              UI/UX design and Intelligent System Design that includes a few concepts of
+              machine learning, Deep learning, Natural Language Processing and
+              Computer Vision</p>
       </div>
 
       <div ref="ending_text_cont" class="ending_text_cont">
           <p ref="ending_text" class="ending_text" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolor expedita ab dolore quaerat animi quam sunt dolorem nulla modi inventore tempore nesciunt sapiente veniam, labore quo, doloribus perferendis? Iusto consectetur velit ad officia nostrum error nam facilis ipsam voluptas omnis quibusdam pariatur veniam, ut nobis similique doloremque aliquid accusamus corrupti voluptatibus. A, asperiores repellat dolor nemo voluptatibus soluta in. </p>
       </div>
+
+
+
     </div>
   </template>
   
@@ -113,7 +121,7 @@
 
           // ending text
 
-          if((widthRed > 2.8) && (widthRed < 3.8)) {
+          if((widthRed > 3.1)) {
             this.$refs.ending_text_cont.style.opacity = '1'
           } else {
             this.$refs.ending_text_cont.style.opacity = '0'
@@ -230,8 +238,17 @@
     z-index:90;
     background: transparent;
     top: 0px; left: 0px;
-    height: 550vh;
+    height: 430vh;
     width: 100vw;
+  }
+  .contact_overlay {
+    position: absolute;
+    width: 90px;
+    height: 25vh;
+    background: #0038b1;
+    z-index: 980;
+    left: 38px;
+    top: 405vh;
   }
   
   </style>
