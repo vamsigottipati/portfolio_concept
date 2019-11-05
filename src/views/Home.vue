@@ -4,6 +4,10 @@
       <p class="hoverable" style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;" >Contact</p>
       <div ref="main_box" class="main_box"></div>
       <div ref="overlay" class="overlay"></div>
+      <div class="bg_shadow scroll_placeholder">
+          <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon" style="color: white;"></i>
+          <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev" style="color: white;"></i>
+      </div>
       <div ref="main_text_cont" class="main_text_cont">
           <p ref="main_text" class="main_text" >Vamsi <br> Krishna</p>
       </div>
@@ -18,7 +22,6 @@
               machine learning, Deep learning, Natural Language Processing and
               Computer Vision</p>
       </div>
-
       <div ref="ending_text_cont" class="ending_text_cont">
           <p ref="ending_text" class="ending_text" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolor expedita ab dolore quaerat animi quam sunt dolorem nulla modi inventore tempore nesciunt sapiente veniam, labore quo, doloribus perferendis? Iusto consectetur velit ad officia nostrum error nam facilis ipsam voluptas omnis quibusdam pariatur veniam, ut nobis similique doloremque aliquid accusamus corrupti voluptatibus. A, asperiores repellat dolor nemo voluptatibus soluta in. </p>
       </div>
@@ -127,6 +130,16 @@
             this.$refs.ending_text_cont.style.opacity = '0'
           }
 
+          // scroll placeholder reverse
+
+          if((widthRed > 3)) {
+            this.$refs.scroll_placeholder_icon.style.display = "none"
+            this.$refs.scroll_placeholder_icon_rev.style.display = "block"
+          } else {
+            this.$refs.scroll_placeholder_icon.style.display = "block"
+            this.$refs.scroll_placeholder_icon_rev.style.display = "none"
+          }
+
           console.log(widthRed)
 
         }
@@ -135,120 +148,167 @@
   </script>
   
   <style scoped>
-  .ref_img {
-    transition: ease-in-out;
-  }
-  .main_box {
-    position: fixed;
-    top: 8vh;
-    height: 84vh;
-    width: 48vw;
-    left: 2vw;
-    background: linear-gradient(0deg, #0038b1, #012c88);
-    z-index: 900;
-  }
-  .ending_text_cont {
-    position: fixed;
-    padding: 0px; 
-    margin: 0px;
-    z-index: 901;
-    top: 0vh;
-    left: 0vw;
-    height: 100vh;
-    width: 100vw;
-    display: flex; flex-direction: column;
-    opacity: 0;
-    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
+    .ref_img {
+      transition: ease-in-out;
+    }
+    .main_box {
+      position: fixed;
+      top: 8vh;
+      height: 84vh;
+      width: 48vw;
+      left: 2vw;
+      background: linear-gradient(0deg, #0038b1, #012c88);
+      z-index: 900;
+    }
+    .ending_text_cont {
+      position: fixed;
+      padding: 0px; 
+      margin: 0px;
+      z-index: 901;
+      top: 0vh;
+      left: 0vw;
+      height: 100vh;
+      width: 100vw;
+      display: flex; flex-direction: column;
+      opacity: 0;
+      transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
 
-  .ending_text{
-    padding: 15vw; 
-    margin: auto;
-    text-align: left;
-    font-weight: 900;
-    color: white;
-    font-size: 2rem;
-    transition-timing-function: ease-in-out;
-  }
-  .teritiary_text_cont {
-    position: fixed;
-    padding: 0px; 
-    margin: 0px;
-    z-index: 901;
-    top: 0vh;
-    left: 0vw;
-    height: 100vh;
-    width: 100vw;
-    display: flex; flex-direction: column;
-    opacity: 0;
-    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
+    .ending_text{
+      padding: 15vw; 
+      margin: auto;
+      text-align: left;
+      font-weight: 900;
+      color: white;
+      font-size: 2rem;
+      transition-timing-function: ease-in-out;
+    }
+    .teritiary_text_cont {
+      position: fixed;
+      padding: 0px; 
+      margin: 0px;
+      z-index: 901;
+      top: 0vh;
+      left: 0vw;
+      height: 100vh;
+      width: 100vw;
+      display: flex; flex-direction: column;
+      opacity: 0;
+      transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
 
-  .teritiary_text {
-    padding: 15vw; 
-    margin: auto;
-    text-align: left;
-    font-weight: 900;
-    color: white;
-    font-size: 2rem;
-    transition-timing-function: ease-in-out;
-  }
-  .secondary_text_cont {
-    position: fixed;
-    padding: 0px; 
-    margin: 0px;
-    z-index: 901;
-    top: 100vh;
-    left: 0vw;
-    height: 100vh;
-    width: 100vw;
-    display: flex; flex-direction: column;
-  }
-  .secondary_text {
-    padding: 0px; 
-    margin: auto;
-    text-align: left;
-    font-weight: 900;
-    color: white;
-    font-size: 6rem;
-    transition-timing-function: ease-in-out;
-  }
-  .main_text_cont {
-    position: fixed;
-    padding: 0px; 
-    margin: 0px;
-    z-index: 901;
-    top: 0vh;
-    left: 0vw;
-    height: 100vh;
-    width: 100vw;
-    display: flex; flex-direction: column;
-  }
-  .main_text {
-    padding: 0px; 
-    margin: auto;
-    text-align: left;
-    font-weight: 900;
-    color: white;
-    font-size: 6rem;
-    transition-timing-function: ease-in-out;
-  }
-  .overlay {
-    position: absolute;
-    z-index:90;
-    background: transparent;
-    top: 0px; left: 0px;
-    height: 430vh;
-    width: 100vw;
-  }
-  .contact_overlay {
-    position: absolute;
-    width: 90px;
-    height: 25vh;
-    background: #0038b1;
-    z-index: 980;
-    left: 38px;
-    top: 405vh;
-  }
-  
+    .teritiary_text {
+      padding: 15vw; 
+      margin: auto;
+      text-align: left;
+      font-weight: 900;
+      color: white;
+      font-size: 2rem;
+      transition-timing-function: ease-in-out;
+    }
+    .secondary_text_cont {
+      position: fixed;
+      padding: 0px; 
+      margin: 0px;
+      z-index: 901;
+      top: 100vh;
+      left: 0vw;
+      height: 100vh;
+      width: 100vw;
+      display: flex; flex-direction: column;
+    }
+    .secondary_text {
+      padding: 0px; 
+      margin: auto;
+      text-align: left;
+      font-weight: 900;
+      color: white;
+      font-size: 6rem;
+      transition-timing-function: ease-in-out;
+    }
+    .main_text_cont {
+      position: fixed;
+      padding: 0px; 
+      margin: 0px;
+      z-index: 901;
+      top: 0vh;
+      left: 0vw;
+      height: 100vh;
+      width: 100vw;
+      display: flex; flex-direction: column;
+    }
+    .main_text {
+      padding: 0px; 
+      margin: auto;
+      text-align: left;
+      font-weight: 900;
+      color: white;
+      font-size: 6rem;
+      transition-timing-function: ease-in-out;
+    }
+    .overlay {
+      position: absolute;
+      z-index:90;
+      background: transparent;
+      top: 0px; left: 0px;
+      height: 430vh;
+      width: 100vw;
+    }
+    .contact_overlay {
+      position: absolute;
+      width: 90px;
+      height: 25vh;
+      background: #0038b1;
+      z-index: 980;
+      left: 38px;
+      top: 405vh;
+    }
+    .scroll_placeholder {
+      position: fixed;
+      width: 50px;
+      height: 70px;
+      background: transparent;
+      z-index: 999;
+      bottom: 6vh;
+      right: 3vw;
+      border-radius: 1000000000px;
+      border: 3px solid #fff;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .scroll_placeholder_icon {
+      -webkit-animation: mover 2s cubic-bezier(0.250, 0.460, 0.450, 0.940)  infinite;
+        animation: mover 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite; 
+      align-self: center;
+    }
+    .scroll_placeholder_icon_rev {
+      display: none;
+      -webkit-animation: mover 2s cubic-bezier(0.250, 0.460, 0.450, 0.940)  infinite;
+        animation: mover 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite; 
+      align-self: center;
+    }
+
+    @-webkit-keyframes mover {
+      0% {
+        transform: translateY(-10px)
+      }
+      50% {
+        transform: translateY(10px)
+      }
+      100% {
+        transform: translateY(-10px)
+      }
+    }
+    @keyframes mover {
+      0% {
+        transform: translateY(-10px)
+      }
+      50% {
+        transform: translateY(10px)
+      }
+      100% {
+        transform: translateY(-10px)
+      }
+    }
+
   </style>

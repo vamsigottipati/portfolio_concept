@@ -274,7 +274,10 @@ export default {
     animation: moveUp 1s ease-in-out infinite alternate both;
   animation-delay: 0.6s;
 }
-
+.bg_shadow {
+  -webkit-animation: bg_shadow 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: bg_shadow 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; 
+}
  @-webkit-keyframes moveUp {
   0% {
     transform: scaleY(0.5)
@@ -320,6 +323,26 @@ export default {
     -webkit-filter: blur(0px);
             filter: blur(0px);
     opacity: 1;
+  }
+}
+@-webkit-keyframes bg_shadow {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes bg_shadow {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
   }
 }
 
