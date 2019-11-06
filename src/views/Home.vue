@@ -323,6 +323,7 @@
     }
     .ending_text {
       font-size: 1.3rem;
+      padding-top: 0vh;
     }
     .secondary_text {
       font-size: 2.8rem; 
@@ -336,6 +337,8 @@
     }
     .contact_overlay {
       width: 55px;
+      height: 140px;
+      top: calc(410vh - 140px);
     }
   }
 
