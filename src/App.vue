@@ -37,7 +37,7 @@
           this.$refs.loader_cont.style.display = 'none'
           this.$refs.rv.style.opacity = '1'
         }, 600);
-      }, 3000);
+      }, 2000);
       var cursor = {
         delay: 8,
         _x: 0,
