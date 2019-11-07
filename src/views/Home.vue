@@ -98,15 +98,15 @@
         var addWidth = ((widthRed * 48) / 2.018)
         this.boxWidth = 48 + addWidth
         if (this.boxWidth >= 96) {
-          if(widthRed < 2.5) {
+          // if(widthRed < 2.5) {
             this.$refs.main_box.style.width = '96vw'
             this.$refs.main_box.style.position = "absolute"
             this.$refs.main_box.style.top = "208vh"
-          } else {
-            this.$refs.main_box.style.width = '96vw'
-            this.$refs.main_box.style.position = "fixed"
-            this.$refs.main_box.style.top = "-42vh"
-          }
+          // } else {
+          //   this.$refs.main_box.style.width = '96vw'
+          //   this.$refs.main_box.style.position = "fixed"
+          //   this.$refs.main_box.style.top = "-42vh"
+          // }
         } else {
           this.$refs.main_box.style.position = "fixed"
           this.$refs.main_box.style.top = "8vh"
