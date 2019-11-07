@@ -52,15 +52,15 @@
         y: 0,
         posX: 0,
         posY: 0,
+        stage: 0,
         mouseX: 0,
         mouseY: 0,
         marLeft: 2,
         boxWidth: 48,
-        mainTextMarLeft: 0,
-        secondaryTextMarTop: 100,
-        stage: 0,
         lastScrollTop: 0,
+        mainTextMarLeft: 0,
         secondaryTextMarLeft: 0,
+        secondaryTextMarTop: 100,
       };
     },
     mounted: function () {
