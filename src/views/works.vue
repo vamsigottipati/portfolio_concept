@@ -38,13 +38,15 @@
                 "max-glare": 1,
                 max: 10,
                 speed: 100,
-
             });
+            this.$refs.works_cont.scrollTop = 0
+            this.mouseIsScrolling()
             window.addEventListener("scroll", this.mouseIsScrolling);
             // window.addEventListener('mousemove', this.setTextShadowEvent)
         },
         updated: function() {
-            window.addEventListener("scroll", this.mouseIsScrolling);
+            // this.mouseIsScrolling()
+            // window.addEventListener("scroll", this.mouseIsScrolling);
         },
         methods: {
             setTextShadowEvent () {

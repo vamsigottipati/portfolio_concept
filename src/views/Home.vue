@@ -72,6 +72,7 @@
       window.addEventListener('mousemove', this.mouseIsMoving);
       window.addEventListener("scroll", this.mouseIsScrolling);
       this.seTfontSize()
+      document.body.scrollTop = 0
     },
     components: {},
     methods: {
