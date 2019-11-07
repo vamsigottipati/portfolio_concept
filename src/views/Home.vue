@@ -182,8 +182,8 @@
     height: 84vh;
     width: 48vw;
     left: 2vw;
-    background: linear-gradient(45deg, #CB356B, #BD3F32);
-    /* background: linear-gradient(0deg, #0038b1, #012c88); */
+    /* background: linear-gradient(45deg, #CB356B, #BD3F32); */
+    background: linear-gradient(45deg, #0575E6, #021B79  );
     z-index: 900;
   }
 
@@ -297,7 +297,8 @@
     position: absolute;
     width: 90px;
     height: 180px;
-    background: linear-gradient(45deg, #CB356B, #BD3F32);
+    /* background: linear-gradient(45deg, #CB356B, #BD3F32); */
+    background: linear-gradient(45deg, #0575E6, #021B79  );
     z-index: 980;
     left: 38px;
     top: calc(410vh - 180px);
