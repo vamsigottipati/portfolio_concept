@@ -173,7 +173,7 @@
               self.$dot.style.transform = "translate(-50%, -50%) scale(1)";
               self.$outline.style.background = "transparent";
               self.$outline.style.transform = "translate(-50%, -50%) scale(1)";
-              self.$outline.style.border = "2px solid #666";
+              self.$outline.style.border = "2px solid #fff";
             }
           },
 
@@ -246,14 +246,14 @@
   .cursor-dot {
     width: 12px;
     height: 12px;
-    color: #aaa;
+    color: #fff;
   }
 
   .cursor-dot-outline {
     width: 60px;
     height: 60px;
     background-color: transparent;
-    border: 2px solid #666;
+    border: 2px solid #fff;
   }
 
 
