@@ -31,10 +31,9 @@
     mounted: function () {
       this.setLoader()
       this.checkMobile()
-      this.setCursorStyle()
     },
     updated: function () {
-      this.setCursorStyle()
+      this.checkMobile()
     },
     methods: {
       checkMobile () {
@@ -42,6 +41,7 @@
           this.$refs.outline.style.display = 'none';
           this.$refs.dot.style.display = 'none';
         } else {
+          this.setCursorStyle()
           this.$refs.outline.style.display = 'block';
           this.$refs.dot.style.display = 'block';
         }
