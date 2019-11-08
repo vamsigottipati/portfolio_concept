@@ -63,7 +63,6 @@
             },
             mouseIsScrolling () {
                 var leftThresh = (window.pageYOffset*25/this.$refs.works_cont.clientHeight)*3.5
-                console.log(leftThresh)
                 this.$refs.works_cont.style.transform = 'translateX(' + -leftThresh+'vw)'
             }
         }

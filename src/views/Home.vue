@@ -68,7 +68,6 @@
       this.y = window.innerHeight;
       this.posY = this.y
       this.posX = this.x
-      console.log(this.y)
       window.addEventListener('mousemove', this.mouseIsMoving);
       window.addEventListener("scroll", this.mouseIsScrolling);
       this.seTfontSize()
@@ -133,7 +132,6 @@
           this.secondaryTextMarTop = (145 - ((widthRed * 100) / 0.75)) * 1.5
           // if(this.secondaryTextMarTop <= 0) {
           //   this.secondaryTextMarTop = 0
-          //   console.log((145 - ((widthRed * 100) / 0.75)) * 1.5)
           //   this.secondaryTextMarLeft = ((145 - ((widthRed * 100) / 0.65)) * 1.1)
           //   this.$refs.secondary_text_cont.style.left = ((145 - ((widthRed * 100) / 0.75)) * 0.65) + 'vw'
           // } else {
