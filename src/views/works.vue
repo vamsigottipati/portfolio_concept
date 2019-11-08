@@ -1,6 +1,6 @@
 <template>
     <div class="home" ref="home_cont" style="text-align: center;overflow-x: hidden;">
-        <p class="hoverable" @click="$router.push('/    ')"
+        <p class="hoverable home_route_text" @click="$router.push('home')"
             style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;">
             Home</p>
         <p class="hoverable" @click="$router.push('works')"
@@ -10,11 +10,11 @@
             <!-- <div style="width: 11rem; height: 11rem; background: white;border-radius: 50%;margin-top: 11rem;margin-left: 11rem;transform: translateZ(20px)"></div> -->
         </div>
         <div class="works_cont" ref="works_cont">
-            <p class="work 1" ref="1">Work 1</p>
-            <p class="work 2" ref="2">Work 2</p>
-            <p class="work 3" ref="3">Work 3</p>
-            <p class="work 4" ref="4">Work 4</p>
-            <p class="work 5" ref="5">Work 5</p>
+            <p class="work 1" ref="1">Hash</p>
+            <p class="work 2" ref="2">SARC</p>
+            <p class="work 3" ref="3">Resume Parser</p>
+            <p class="work 4" ref="4">Resume Builder</p>
+            <p class="work 5" ref="5">Smart <br> Car Parking</p>
             <div style="height: 20vh; width: 50vw; background: white;"></div>
         </div>
     </div>
@@ -100,6 +100,7 @@
         padding-top: 20vh;
         padding-bottom: 20vh;
         align-self: flex-start;
+        text-align: left;
     }
     
     .work:first-of-type{
@@ -128,17 +129,22 @@
             padding-left: 25vw;
         }
     }
-    @media screen and (max-width: 576) {
+    @media screen and (max-width: 460px) {
+        .hoverable {
+            font-size: 20px;
+        }
+        .contact_overlay {
+            width: 55px;
+            height: 140px;
+            top: calc(410vh - 140px);
+        }
         .work {
-            font-size: 3rem;
+            font-size: 2rem;
+            padding-top: 40vh;
         }
         .work:first-of-type{
-            margin-top: calc(30vh - 2rem);
+            margin-top: calc(10vh - 2rem);
         }
-        .works_cont{
-            margin-left: -50vw;
-        }
-
     }
 
 </style>
