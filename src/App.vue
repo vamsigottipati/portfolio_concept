@@ -30,12 +30,22 @@
     name: 'App',
     mounted: function () {
       this.setLoader()
+      this.checkMobile()
       this.setCursorStyle()
     },
     updated: function () {
       this.setCursorStyle()
     },
     methods: {
+      checkMobile () {
+        if(window.innerWidth < 480) {
+          this.$refs.outline.style.display = 'none';
+          this.$refs.dot.style.display = 'none';
+        } else {
+          this.$refs.outline.style.display = 'block';
+          this.$refs.dot.style.display = 'block';
+        }
+      },
       setLoader() {
         setTimeout(() => {
           this.$refs.loader_cont.style.opacity = '0'

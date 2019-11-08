@@ -74,6 +74,10 @@
       this.seTfontSize()
       document.body.scrollTop = 0
     },
+    destroyed: function () {
+      window.removeEventListener('mousemove', this.mouseIsMoving);
+      window.removeEventListener("scroll", this.mouseIsScrolling);
+    },
     components: {},
     methods: {
       seTfontSize () {

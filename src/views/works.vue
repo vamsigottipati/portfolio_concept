@@ -49,6 +49,9 @@
             // this.mouseIsScrolling()
             // window.addEventListener("scroll", this.mouseIsScrolling);
         },
+        destroyed: function () {
+            window.removeEventListener("scroll", this.mouseIsScrolling);
+        },
         methods: {
             setTextShadowEvent () {
                 this.mouseX = event.pageX;
