@@ -318,6 +318,11 @@
     .main_text {
       font-size: 4.5rem; 
     }
+    .contact_overlay {
+      width: 70px;
+      height: 160px;
+      top: calc(410vh - 160px);
+    }
   }
 
   @media screen and (max-width: 460px) {

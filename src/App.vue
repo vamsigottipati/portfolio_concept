@@ -354,6 +354,9 @@
     .scroll_placeholder {
       display: none
     }
+    .hoverable {
+      font-size: 24px;
+    }
   }
 
   @-webkit-keyframes moveUp {

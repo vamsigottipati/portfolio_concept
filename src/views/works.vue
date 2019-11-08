@@ -15,6 +15,7 @@
             <p class="work 3" ref="3">Work 3</p>
             <p class="work 4" ref="4">Work 4</p>
             <p class="work 5" ref="5">Work 5</p>
+            <div style="height: 20vh; width: 50vw; background: white;"></div>
         </div>
     </div>
 </template>
@@ -58,9 +59,9 @@
                 this.$refs[this.active].style.textShadow = tot
             },
             mouseIsScrolling () {
-                var leftThresh = window.pageYOffset*25/this.$refs.works_cont.clientHeight
+                var leftThresh = (window.pageYOffset*25/this.$refs.works_cont.clientHeight)*3.5
                 console.log(leftThresh)
-                this.$refs.works_cont.style.left = -leftThresh+'vw'
+                this.$refs.works_cont.style.transform = 'translateX(' + -leftThresh+'vw)'
             }
         }
     }
@@ -69,24 +70,21 @@
 <style scoped>
     .main_cirle {
         position: fixed;
-        top: calc(50vh - 16.5rem);
-        left: calc(50vw - 16.5rem);
-        height: 33rem;
-        width: 33rem;
+        top: calc(50vh - 35vmin);
+        left: calc(50vw - 35vmin);
+        height: 70vmin;
+        width: 70vmin;
         border-radius: 50%;
         background: linear-gradient(45deg, #CB356B, #BD3F32);
         /* background: linear-gradient(0deg, #0038b1, #012c88); */
         transform-style: preserve-3d;
         transform: perspective(2000px);
-        z-index: 970;
+        z-index: 0;
     }
     .works_cont {
-        position: absolute;
         width: 200vw;
-        height: 100vh;
-        top: 0px;
-        left: 0px;
-        z-index: 975;
+        height: auto;
+        z-index: 975 !important;
         display: flex;
         flex-direction: column;
     }
@@ -117,6 +115,28 @@
     }
     .work:nth-of-type(5){
         padding-left: 85vw;
-        margin-bottom: 20vh !important;
+        /* margin-bottom: 20vh !important; */
     }
+    @media screen and (max-width: 768px) {
+        .work {
+            font-size: 4rem;
+        }
+        .work:first-of-type{
+            margin-top: calc(30vh - 2rem);
+            padding-left: 25vw;
+        }
+    }
+    @media screen and (max-width: 576) {
+        .work {
+            font-size: 3rem;
+        }
+        .work:first-of-type{
+            margin-top: calc(30vh - 2rem);
+        }
+        .works_cont{
+            margin-left: -50vw;
+        }
+
+    }
+
 </style>
