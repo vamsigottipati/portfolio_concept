@@ -6,16 +6,15 @@
         <p class="hoverable" @click="$router.push('works')"
             style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;">
             Contact</p>
-        <div class="main_cirle" ref="main_circle" >
-            <!-- <div style="width: 11rem; height: 11rem; background: white;border-radius: 50%;margin-top: 11rem;margin-left: 11rem;transform: translateZ(20px)"></div> -->
-        </div>
+        <img src="../assets/parser.png" class="main_cirle" ref="main_circle" />
+        <!-- </div> -->
         <div class="works_cont" ref="works_cont">
             <p class="work 1" ref="1">Hash</p>
             <p class="work 2" ref="2">SARC</p>
-            <p class="work 3" ref="3">Resume Parser</p>
-            <p class="work 4" ref="4">Resume Builder</p>
-            <p class="work 5" ref="5">Smart <br> Car Parking</p>
-            <div style="height: 20vh; width: 50vw; background: white;"></div>
+            <p class="work 3" ref="3">Resume <br> Parser</p>
+            <p class="work 4" ref="4">Resume <br> Builder</p>
+            <p class="work 5" ref="5">Smart <br> Car <br> Parking</p>
+            <div style="height: 10vh; width: 50vw; background: white;"></div>
         </div>
     </div>
 </template>
@@ -43,6 +42,8 @@
             this.$refs.works_cont.scrollTop = 0
             this.mouseIsScrolling()
             window.addEventListener("scroll", this.mouseIsScrolling);
+            // var leftThreshImg = (window.innerWidth - this.$refs.main_circle.clientWidth)/2
+            // this.$refs.main_circle.style.left = leftThreshImg + 'px'
             // window.addEventListener('mousemove', this.setTextShadowEvent)
         },
         updated: function() {
@@ -64,6 +65,8 @@
             mouseIsScrolling () {
                 var leftThresh = (window.pageYOffset*25/this.$refs.works_cont.clientHeight)*3.5
                 this.$refs.works_cont.style.transform = 'translateX(' + -leftThresh+'vw)'
+                // var leftThreshImg = (window.innerWidth - this.$refs.main_circle.clientWidth)/2
+                // this.$refs.main_circle.style.left = leftThreshImg + 'px'
             }
         }
     }
@@ -72,15 +75,15 @@
 <style scoped>
     .main_cirle {
         position: fixed;
-        top: calc(50vh - 35vmin);
-        left: calc(50vw - 35vmin);
-        height: 70vmin;
-        width: 70vmin;
-        border-radius: 50%;
-        background: linear-gradient(45deg, #CB356B, #BD3F32);
+        top: 20vh;
+        left: auto;
+        right: auto;
+        height: 60vh;
+        width: auto;
+        /* background: linear-gradient(45deg, #CB356B, #BD3F32); */
         /* background: linear-gradient(0deg, #0038b1, #012c88); */
         transform-style: preserve-3d;
-        transform: perspective(2000px);
+        transform: perspective(1000px);
         z-index: 0;
     }
     .works_cont {
