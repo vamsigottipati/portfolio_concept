@@ -44,8 +44,8 @@
     methods: {
       checkMobile () {
         if(window.innerWidth < 480) {
-          this.$refs.outline.style.display = 'block';
-          this.$refs.dot.style.display = 'block';
+          this.$refs.outline.style.display = 'none';
+          this.$refs.dot.style.display = 'none';
         } else {
           this.setCursorStyle()
           this.$refs.outline.style.display = 'block';

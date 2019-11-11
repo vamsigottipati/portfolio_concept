@@ -97,12 +97,13 @@
             this.$refs.main_box.style.transition = '0s cubic-bezier(0.075, 0.82, 0.165, 1)'
           }, 1000)
 
-          this.$refs.main_text_cont.style.transition = '1s ease-in-out'
-          this.$refs.main_text_cont.style.top = '0vh'
           setTimeout(() => {
-            this.$refs.main_text_cont.style.transition = '0s ease-in-out'
-          }, 1000)
-
+            this.$refs.main_text_cont.style.transition = '1s ease-in-out'
+            this.$refs.main_text_cont.style.opacity = '1'
+            setTimeout(() => {
+              this.$refs.main_text_cont.style.transition = '0s ease-in-out'
+            }, 1000)
+          }, 300);
         }, 300);
 
       },
@@ -287,12 +288,13 @@
     padding: 0px;
     margin: 0px;
     z-index: 901;
-    top: -100vh;
+    top: 0vh;
     left: 0vw;
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
+    opacity: 0;
   }
 
   .main_text {
