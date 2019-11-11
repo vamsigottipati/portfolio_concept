@@ -68,6 +68,7 @@
       this.y = window.innerHeight;
       this.posY = this.y
       this.posX = this.x
+      this.setWidth()
       window.addEventListener('mousemove', this.mouseIsMoving);
       window.addEventListener("scroll", this.mouseIsScrolling);
       this.seTfontSize()
@@ -86,6 +87,24 @@
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione.
           `
         }
+      },
+      setWidth() {
+        setTimeout(() => {
+          
+          this.$refs.main_box.style.transition = '0.6s cubic-bezier(0.075, 0.82, 0.165, 1)'
+          this.$refs.main_box.style.width = '48vw'
+          setTimeout(() => {
+            this.$refs.main_box.style.transition = '0s cubic-bezier(0.075, 0.82, 0.165, 1)'
+          }, 1000)
+
+          this.$refs.main_text_cont.style.transition = '1s ease-in-out'
+          this.$refs.main_text_cont.style.top = '0vh'
+          setTimeout(() => {
+            this.$refs.main_text_cont.style.transition = '0s ease-in-out'
+          }, 1000)
+
+        }, 300);
+
       },
       mouseIsMoving(event) {
         this.mouseX = event.pageX;
@@ -183,7 +202,7 @@
     position: fixed;
     top: 8vh;
     height: 84vh;
-    width: 48vw;
+    width: 0vw;
     left: 2vw;
     /* background: linear-gradient(45deg, #CB356B, #BD3F32); */
     background: linear-gradient(45deg, #0575E6, #021B79  );
@@ -268,7 +287,7 @@
     padding: 0px;
     margin: 0px;
     z-index: 901;
-    top: 0vh;
+    top: -100vh;
     left: 0vw;
     height: 100vh;
     width: 100vw;

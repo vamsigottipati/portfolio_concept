@@ -35,7 +35,7 @@
       }
     },
     mounted: function () {
-      this.setLoader()
+      // this.setLoader()
       this.checkMobile()
     },
     updated: function () {
@@ -52,15 +52,11 @@
           this.$refs.dot.style.display = 'block';
         }
       },
-      setLoader() {
-        setTimeout(() => {
-          this.$refs.loader_cont.style.opacity = '0'
-          setTimeout(() => {
-            this.$refs.loader_cont.style.display = 'none'
-            this.$refs.rv.style.opacity = '1'
-          }, 600);
-        }, 1000);
-      },
+      // setLoader() {
+      //     this.$refs.loader_cont.style.opacity = '0'
+      //     this.$refs.loader_cont.style.display = 'none'
+      //     this.$refs.rv.style.opacity = '1'
+      // },
       setCursorStyle() {
         var cursor = {
           delay: 8,
@@ -218,7 +214,10 @@
 
   .rv {
     transition: 0.5s;
-    opacity: 0;
+    opacity: 1;
+  }
+  .loader_cont {
+    display: none;
   }
 
   .cursor-dot,
