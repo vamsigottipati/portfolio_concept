@@ -69,7 +69,8 @@ export default {
       "full-page-listening": true,
       "max-glare": 1,
       max: 10,
-      speed: 100
+      speed: 100,
+      reset: true
     });
     this.setMargin()
     window.addEventListener("scroll", this.mouseIsScrolling);
@@ -92,64 +93,34 @@ export default {
     },
     mouseIsScrolling () {
         var scrollRatio = window.pageYOffset / window.innerHeight
-        if(scrollRatio < 2 && scrollRatio >= 0) {
-            // this.curP = 1
-            // this.prevP = 0
-            // this.setMargin()
-            // this.$refs[this.prevP].style.opacity = '0'
-            // this.$refs[this.curP].style.opacity = '1'
-            // this.$refs[this.curP].style.left = -20 + scrollRatio*30 + 'vw'
+        if(scrollRatio < 1 && scrollRatio >= 0) {
             this.$refs.main_circle.style.transitionDelay = '0.5s'
             this.$refs.main_circle.style.opacity = '0'
             this.$refs.main_circle.src = this.hashImg
             this.$refs.main_circle.style.opacity = '1'
             this.$refs.main_circle.style.transitionDelay = '0s'
         } else {
-            if(scrollRatio > 2 && scrollRatio < 4) {
-                // this.curP = 2
-                // this.prevP = 1
-                // this.setMargin()
-                // this.$refs[this.prevP].style.opacity = '0'
-                // this.$refs[this.curP].style.opacity = '1'
-                // this.$refs[this.curP].style.left = -20 + (scrollRatio - 2)*30 + 'vw'
+            if(scrollRatio > 1 && scrollRatio < 2) {
                 this.$refs.main_circle.style.transitionDelay = '0.5s'
                 this.$refs.main_circle.style.opacity = '0'
                 this.$refs.main_circle.src = this.sarcImg
                 this.$refs.main_circle.style.opacity = '1'
                 this.$refs.main_circle.style.transitionDelay = '0s'
             } else {
-                if(scrollRatio > 4 && scrollRatio < 6) {
-                    // this.curP = 3
-                    // this.prevP = 2
-                    // this.setMargin()
-                    // this.$refs[this.prevP].style.opacity = '0'
-                    // this.$refs[this.curP].style.opacity = '1'
-                    // this.$refs[this.curP].style.left = -20 + (scrollRatio - 4)*30 + 'vw'
+                if(scrollRatio > 2 && scrollRatio < 3) {
                     this.$refs.main_circle.style.transitionDelay = '0.5s'
                     this.$refs.main_circle.style.opacity = '0'
                     this.$refs.main_circle.src = this.builderImg
                     this.$refs.main_circle.style.opacity = '1'
                     this.$refs.main_circle.style.transitionDelay = '0s'
                 } else {
-                    if(scrollRatio > 6 && scrollRatio < 8) {
-                        // this.curP = 4
-                        // this.prevP = 3
-                        // this.setMargin()
-                        // this.$refs[this.prevP].style.opacity = '0'
-                        // this.$refs[this.curP].style.opacity = '1'
-                        // this.$refs[this.curP].style.left = -20 + (scrollRatio - 6)*30 + 'vw'
+                    if(scrollRatio > 3 && scrollRatio < 4) {
                         this.$refs.main_circle.style.transitionDelay = '0.5s'
                         this.$refs.main_circle.style.opacity = '0'
                         this.$refs.main_circle.src = this.parserImg
                         this.$refs.main_circle.style.opacity = '1'
                         this.$refs.main_circle.style.transitionDelay = '0s'
                     } else {
-                        // this.curP = 5
-                        // this.prevP = 4
-                        // this.setMargin()
-                        // this.$refs[this.prevP].style.opacity = '0'
-                        // this.$refs[this.curP].style.opacity = '1'
-                        // this.$refs[this.curP].style.left = -20 + (scrollRatio - 8)*30 + 'vw'
                         this.$refs.main_circle.style.transitionDelay = '0.5s'
                         this.$refs.main_circle.style.opacity = '0'
                         this.$refs.main_circle.src = this.scpImg
@@ -195,12 +166,12 @@ export default {
   background: transparent;
   top: 0px;
   left: 0px;
-  height: 1200vh;
+  height: 600vh;
   width: 100vw;
 }
 .worksPlaceholderTextCont {
     position: fixed;
-    left: -20vw;
+    left: -10vw;
     top: 20vh;
     width: 100vw;
     height: 60vh;

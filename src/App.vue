@@ -28,6 +28,12 @@
 
   export default {
     name: 'App',
+    data () {
+      return {
+        mouseX: 0,
+        mouseY: 0,
+      }
+    },
     mounted: function () {
       this.setLoader()
       this.checkMobile()
@@ -38,8 +44,8 @@
     methods: {
       checkMobile () {
         if(window.innerWidth < 480) {
-          this.$refs.outline.style.display = 'none';
-          this.$refs.dot.style.display = 'none';
+          this.$refs.outline.style.display = 'block';
+          this.$refs.dot.style.display = 'block';
         } else {
           this.setCursorStyle()
           this.$refs.outline.style.display = 'block';
@@ -100,27 +106,6 @@
               });
             });
 
-            // scroll placeholder hover effect
-
-            // document.getElementsByClassName("scroll_placeholder").forEach(function (el) {
-            //   el.addEventListener("mouseover", function () {
-            //     self.cursorEnlarged = true;
-            //     self.toggleCursorSize();
-            //     el.style.border = "2.5px solid black"
-            //     el.children.forEach(cel => {
-            //       cel.style.color = "black"
-            //     });            });
-            //   el.addEventListener("mouseout", function () {
-            //     self.cursorEnlarged = false;
-            //     self.toggleCursorSize();
-            //     // el.style.fontSize = '22px'
-            //     el.style.border = "1.5px solid white"
-            //     el.children.forEach(cel => {
-            //       cel.style.color = "white"
-            //     });
-            //   });
-            // })
-
             document.getElementsByClassName("clickable").forEach(function (el) {
               el.addEventListener("mousedown", function () {
                 self.cursorEnlarged = true;
@@ -138,8 +123,8 @@
               self.toggleCursorVisibility();
 
               // Position the dot
-              self.endX = e.pageX;
-              self.endY = e.pageY;
+              self.endX = e.pageX - window.pageXOffset;
+              self.endY = e.pageY - window.pageYOffset;
               self.$dot.style.top = self.endY + "px";
               self.$dot.style.left = self.endX + "px";
             });
@@ -239,12 +224,12 @@
   .cursor-dot,
   .cursor-dot-outline {
     pointer-events: none;
-    position: absolute;
+    position: fixed;
     z-index: 990;
     top: 50%;
     left: 50%;
     border-radius: 50%;
-    opacity: 0;
+    opacity: 1;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
