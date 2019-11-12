@@ -6,7 +6,7 @@
     <p class="hoverable" @click="$router.push('works')"
       style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;">
       Contact</p>
-    <div class="overlay"></div>
+    <div ref="overlay" class="overlay"></div>
     <div class="sideBox" ref="sideBox"></div>
     <div class="sideboxTextWrapper">
         <p class="heading hoverable" ref="heading">Hash</p>
@@ -83,7 +83,7 @@
     top: 0px;
     left: 0px;
     width: 100vw;
-    height: 1000vh;
+    height: 300vh;
     z-index: 1;
   }
 </style>
@@ -102,13 +102,32 @@
         builderImg: require('../assets/builder.png'),
         parserImg: require('../assets/parser.png'),
         scpImg: require('../assets/hash.png'),
-        scrollRatio: 0
+        scrollRatio: 0,
+        curImg: 0,
+        imgArr: [this.hashImg, this.sarcImg, this.builderImg, this.parserImg, this.scpImg],
+        isScrolling: false,
+        throttle: (fn, limit) => {
+          let flag = true;
+          return function(){
+            let context = this;
+            let args = arguments;
+            if(flag){
+              fn.apply(context, args);
+              flag = false;
+              setTimeout(() => {
+                flag=true;
+              }, limit);
+            }
+          }
+        }
       }
     },
     mounted: function () {
       this.setWidth()
-      this.initTilt()
-      window.addEventListener('scroll', this.mouseScrolling)
+      setTimeout(() => {
+        this.initTilt()
+      }, 1000);
+      window.addEventListener('scroll', this.throttle(this.mouseScrolling, 1000))
     },
     methods: {
       setWidth() {
@@ -133,30 +152,45 @@
         });
       },
       mouseScrolling () {
-        this.scrollRatio = window.pageYOffset/window.innerWidth
+        // if(this.scrollRatio > window.pageYOffset/window.innerHeight) {
+        //   // scrolling top
+        //   if(this.curImg != 0) {
+        //     this.curImg = this.curImg - 1
+        //   }
+        // } else {
+        //   // scrolling bottom
+        //   if(this.curImg < this.imgArr.length) {
+        //     this.curImg = this.curImg + 1
+        //   }
+        // }
+        // this.scrollRatio = window.pageYOffset/window.innerHeight
 
-        if(this.scrollRatio < 1) {
-          this.$refs.mainImg.src = this.hashImg
-          this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-        } else {
-          if (this.scrollRatio >= 1 && this.scrollRatio < 2) {
-            this.$refs.mainImg.src = this.sarcImg
-            this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-          } else {
-            if(this.scrollRatio >= 2 && this.scrollRatio < 3) {
-              this.$refs.mainImg.src = this.builderImg
-              this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-            } else {
-              if(this.scrollRatio >= 3 && this.scrollRatio < 4) {
-                this.$refs.mainImg.src = this.parserImg
-                this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-              } else {
-                this.$refs.mainImg.src = this.scpImg
-                this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-              }
-            }
-          }
-        }
+        console.log('event')
+
+        // if(this.scrollRatio < 0.4) {
+        //   this.$refs.mainImg.src = this.hashImg
+        //   this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
+        // } else {
+        //   if (this.scrollRatio >= 0.4 && this.scrollRatio <0.8) {
+        //     this.$refs.mainImg.src = this.sarcImg
+        //     this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
+        //   } else {
+        //     if(this.scrollRatio >= 0.8 && this.scrollRatio < 1.2) {
+        //       this.$refs.mainImg.src = this.builderImg
+        //       this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
+        //     } else {
+        //       if(this.scrollRatio >= 1.2 && this.scrollRatio < 1.6) {
+        //         this.$refs.mainImg.src = this.parserImg
+        //         this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
+        //       } else {
+        //         if(this.scrollRatio >= 1.6) {
+        //           this.$refs.mainImg.src = this.scpImg
+        //           this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
 
       }
     }
