@@ -102,7 +102,8 @@
         builderImg: require('../assets/builder.png'),
         parserImg: require('../assets/parser.png'),
         scpImg: require('../assets/hash.png'),
-        scrollRatio: 0,
+        scrollRatio: window.pageYOffset,
+        prevPageOff: 0,
         curImg: 0,
         imgArr: [this.hashImg, this.sarcImg, this.builderImg, this.parserImg, this.scpImg],
         isScrolling: false,
@@ -147,25 +148,21 @@
         VanillaTilt.init(this.$refs.mainImg, {
             "full-page-listening": true,
             "max-glare": 1,
-            max: 10,
+            max: 30,
             speed: 100,
         });
       },
       mouseScrolling () {
-        // if(this.scrollRatio > window.pageYOffset/window.innerHeight) {
-        //   // scrolling top
-        //   if(this.curImg != 0) {
-        //     this.curImg = this.curImg - 1
-        //   }
-        // } else {
-        //   // scrolling bottom
-        //   if(this.curImg < this.imgArr.length) {
-        //     this.curImg = this.curImg + 1
-        //   }
-        // }
-        // this.scrollRatio = window.pageYOffset/window.innerHeight
-
-        console.log('event')
+        var dup = this.prevPageOff
+        this.prevPageOff = window.pageYOffset 
+        console.log(dup, this.prevPageOff)
+        if(dup > this.prevPageOff) {
+          // scrolling top
+            console.log('scrolling up')
+        } else {
+          // scrolling bottom
+            console.log('scrolling down')
+        }
 
         // if(this.scrollRatio < 0.4) {
         //   this.$refs.mainImg.src = this.hashImg
