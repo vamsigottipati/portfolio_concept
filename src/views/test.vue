@@ -83,7 +83,7 @@
     top: 0px;
     left: 0px;
     width: 100vw;
-    height: 300vh;
+    height: 100000vh;
     z-index: 1;
   }
 </style>
@@ -131,9 +131,21 @@
         var vm = this
         this.scrollStop(function () {
           if((window.pageYOffset - vm.prevPageOff) > 0) {
-            console.log('scrolling down')
+            // console.log('scrolling down')
+            if(vm.curImg < 5) {
+              vm.curImg = vm.curImg + 1
+            } else {
+              vm.curImg = 5
+            }
+            console.log(vm.curImg)
           } else {
-            console.log('scrolling up');
+            // console.log('scrolling up');
+            if(vm.curImg > 0) {
+              vm.curImg = vm.curImg - 1
+            } else {
+              vm.curImg = 0
+            }
+            console.log(vm.curImg)
           }
           vm.prevPageOff = window.pageYOffset
         })
