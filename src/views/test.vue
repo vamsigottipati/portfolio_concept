@@ -106,31 +106,38 @@
         prevPageOff: 0,
         curImg: 0,
         imgArr: [this.hashImg, this.sarcImg, this.builderImg, this.parserImg, this.scpImg],
-        isScrolling: false,
-        throttle: (fn, limit) => {
-          let flag = true;
-          return function(){
-            let context = this;
-            let args = arguments;
-            if(flag){
-              fn.apply(context, args);
-              flag = false;
-              setTimeout(() => {
-                flag=true;
-              }, limit);
-            }
-          }
+        scrollStop: function (callback) {
+          if (!callback || typeof callback !== 'function') return;
+          var isScrolling;
+          window.addEventListener('scroll', function () {
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(function() {
+              callback()
+            }, 66);
+          }, false)
         }
       }
     },
     mounted: function () {
+      window.scrollTo(0, 0)
       this.setWidth()
       setTimeout(() => {
         this.initTilt()
       }, 1000);
-      window.addEventListener('scroll', this.throttle(this.mouseScrolling, 1000))
+      this.afterScroll()
     },
     methods: {
+      afterScroll () {
+        var vm = this
+        this.scrollStop(function () {
+          if((window.pageYOffset - vm.prevPageOff) > 0) {
+            console.log('scrolling down')
+          } else {
+            console.log('scrolling up');
+          }
+          vm.prevPageOff = window.pageYOffset
+        })
+      },
       setWidth() {
         setTimeout(() => {
           this.$refs.sideBox.style.width = '40vw'
@@ -152,44 +159,6 @@
             speed: 100,
         });
       },
-      mouseScrolling () {
-        var dup = this.prevPageOff
-        this.prevPageOff = window.pageYOffset 
-        console.log(dup, this.prevPageOff)
-        if(dup > this.prevPageOff) {
-          // scrolling top
-            console.log('scrolling up')
-        } else {
-          // scrolling bottom
-            console.log('scrolling down')
-        }
-
-        // if(this.scrollRatio < 0.4) {
-        //   this.$refs.mainImg.src = this.hashImg
-        //   this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-        // } else {
-        //   if (this.scrollRatio >= 0.4 && this.scrollRatio <0.8) {
-        //     this.$refs.mainImg.src = this.sarcImg
-        //     this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-        //   } else {
-        //     if(this.scrollRatio >= 0.8 && this.scrollRatio < 1.2) {
-        //       this.$refs.mainImg.src = this.builderImg
-        //       this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-        //     } else {
-        //       if(this.scrollRatio >= 1.2 && this.scrollRatio < 1.6) {
-        //         this.$refs.mainImg.src = this.parserImg
-        //         this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-        //       } else {
-        //         if(this.scrollRatio >= 1.6) {
-        //           this.$refs.mainImg.src = this.scpImg
-        //           this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight)/2 + 'px'
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
-
-      }
     }
   }
 
