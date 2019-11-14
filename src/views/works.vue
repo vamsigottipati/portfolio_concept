@@ -164,7 +164,7 @@
                     'A complex blog built to bridge the gap between BITSIAN Alumni and students with multiple features including a merchendise portal and a chat section.',
                     'A visual Resume Builder with high level customisation, a few pre built templates for a starup InfiniteSearches',
                     'Resume analysing tool that reads, segments and ranks a resume based on parameters set',
-                    '',
+                    'Smart car parking system that registers and acknowledges when, where, how and who enters the UST Global campus. ', /* Depends mostly on detection and tracking of cars and their number plates. */
                 ],
                 scrollStop: function (callback) {
                     if (!callback || typeof callback !== 'function') return;

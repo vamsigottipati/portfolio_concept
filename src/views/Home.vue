@@ -29,11 +29,7 @@
         Computer Vision</p>
     </div>
     <div ref="ending_text_cont" class="ending_text_cont">
-      <p ref="ending_text" class="ending_text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolor
-        expedita ab dolore quaerat animi quam sunt dolorem nulla modi inventore tempore nesciunt sapiente veniam, labore
-        quo, doloribus perferendis? Iusto consectetur velit ad officia nostrum error nam facilis ipsam voluptas omnis
-        quibusdam pariatur veniam, ut nobis similique doloremque aliquid accusamus corrupti voluptatibus. A, asperiores
-        repellat dolor nemo voluptatibus soluta in. 
+      <p ref="ending_text" class="ending_text"> The focal point of my work is around improving Human Computer interaction in various sectors that mainly happens through the internet. I have done a few projects that utilises web technologies like Javascript, Nodejs, Vuejs, AngularJs, ReactJs, database systems like MongoDB, Sql, Tools like travis, Jest, Chai and Mocha, Machine Learning algorithms like KNN, SVM, Linear and Logistic Regressions, Deep Learning concepts like ANN, CNN, RNN, GAN, VAE.
       </p>
     </div>
 
@@ -83,8 +79,7 @@
       seTfontSize () {
         if(this.x <= 460) {
           this.$refs.ending_text.innerText = `
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione odit ullam dolorem a porro cumque fuga iste facilis ex.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione.
+          The focal point of my work is around improving Human Computer interaction in various sectors that mainly happens through the internet. I have done a few projects that utilises web technologies like Javascript, Nodejs, Vuejs, AngularJs, ReactJs, database systems like MongoDB, Sql, Tools like travis, Jest, Chai and Mocha, Machine Learning algorithms like KNN, SVM, Linear and Logistic Regressions, Deep Learning concepts like ANN, CNN, RNN, GAN, VAE.
           `
         }
       },
