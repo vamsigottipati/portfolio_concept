@@ -1,19 +1,37 @@
 <template>
     <div class="pageWrapper">
         <p class="hoverable" @click="$router.push('/')"
-            style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;">
+            style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 999;">
             Home</p>
         <p class="hoverable" @click="$router.push('works')"
-            style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;">
+            style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:999;">
             Contact</p>
+        <i class="fas fa-bars hoverable" ref="menu_icon" @click="this.showModel"
+            style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 990;"></i>
         <div ref="overlay" class="overlay"></div>
         <div class="sideBox" ref="sideBox"></div>
-        <div class="sideboxTextWrapper">
+        <div ref="sideboxTextWrapper" class="sideboxTextWrapper">
             <p class="heading " ref="heading">{{this.curText}}</p>
             <p class="description" ref="description">{{this.curDescription}}</p>
         </div>
+        <div class="model" ref="model">
+            <i class="fas fa-times hoverable" @click="this.closeModel"
+                style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 990;"></i>
+            <div
+                style="display: flex; flex-direction: column;justify-content: center;align-content: center;width: 100vw;height: 80vh;margin-top: 10vh;margin-bottom: 10vh;overflow-y: scroll;">
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Hash</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">SARC</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Resume
+                    Builder</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Resume
+                    Parser</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Smart Car
+                    Parking</p>
+            </div>
+
+        </div>
         <img :src="this.hashImg" ref="mainImg" class="mainImg" alt="">
-        <div class="bg_shadow scroll_placeholder">
+        <div ref="scroll_placeholder" class="bg_shadow scroll_placeholder">
             <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon"
                 style="font-size: 12px;"></i>
             <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev"
@@ -96,6 +114,22 @@
         height: 100000vh;
         z-index: 1;
     }
+
+    .model {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: transparent;
+        top: 0px;
+        left: 0px;
+        z-index: 990;
+        display: none;
+    }
+
+    .menuItems {
+        color: grey;
+        font-size: 30px;
+    }
 </style>
 
 
@@ -139,9 +173,11 @@
                         window.clearTimeout(isScrolling);
                         isScrolling = setTimeout(function () {
                             callback()
-                        }, 46);
+                        }, 36);
                     }, false)
-                }
+                },
+                moDispRefs: ['mainImg', 'scroll_placeholder', 'sideboxTextWrapper', 'menu_icon', 'sideBox'],
+                showItems: false,
             }
         },
         mounted: function () {
@@ -158,46 +194,33 @@
                 this.scrollStop(function () {
                     if ((window.pageYOffset - vm.prevPageOff) > 0) {
                         // console.log('scrolling down')
-                        if (vm.curImg < 4) {
-                            vm.curImg = vm.curImg + 1
-                            vm.changeData(vm.curImg)
-                        } else {
-                            vm.curImg = 5
-                            // vm.changeData(vm.curImg)
-                            // show that this is end
+                        if (!vm.showItems) {
+                            if (vm.curImg < 4) {
+                                vm.curImg = vm.curImg + 1
+                                vm.changeData(vm.curImg)
+                            } else {
+                                vm.curImg = 5
+                                // vm.changeData(vm.curImg)
+                                // show that this is end
+                            }
                         }
                         console.log(vm.curImg)
                     } else {
                         // console.log('scrolling up');
-                        if (vm.curImg > 0) {
-                            vm.curImg = vm.curImg - 1
-                            vm.changeData(vm.curImg)
-                        } else {
-                            vm.curImg = 0
-                            // vm.changeData(vm.curImg)
-                            //  show this is top
+                        if (!vm.showItems) {
+                            if (vm.curImg > 0) {
+                                vm.curImg = vm.curImg - 1
+                                vm.changeData(vm.curImg)
+                            } else {
+                                vm.curImg = 0
+                                // vm.changeData(vm.curImg)
+                                //  show this is top
+                            }
                         }
                         console.log(vm.curImg)
                     }
                     vm.prevPageOff = window.pageYOffset
-                    if(vm.curImg <= 3) {
-                        vm.$refs.scroll_placeholder_icon.style.display = "block"
-                        vm.$refs.scroll_placeholder_icon_rev.style.display = "none"
-                    } else {
-                        vm.$refs.scroll_placeholder_icon.style.display = "none"
-                        vm.$refs.scroll_placeholder_icon_rev.style.display = "block"
-                    }
-                    if(vm.curImg <= 4) {
-                        vm.$refs.mainImg.style.display = 'block'
-                        vm.$refs.heading.style.display = 'block'
-                        vm.$refs.description.style.display = 'block'
-                        vm.$refs.sideBox.style.width = '40vw'
-                    } else {
-                        vm.$refs.mainImg.style.display = 'none'
-                        vm.$refs.heading.style.display = 'none'
-                        vm.$refs.description.style.display = 'none'
-                        vm.$refs.sideBox.style.width = '96vw'
-                    }
+                    vm.setBreakPoints()
                 })
             },
             setWidth() {
@@ -213,26 +236,51 @@
                     }, 700);
                 }, 500);
             },
+            setBreakPoints() {
+                var vm = this
+                if (!vm.showItems) {
+                    if (vm.curImg <= 3) {
+                        vm.$refs.scroll_placeholder_icon.style.display = "block"
+                        vm.$refs.scroll_placeholder_icon_rev.style.display = "none"
+                    } else {
+                        vm.$refs.scroll_placeholder_icon.style.display = "none"
+                        vm.$refs.scroll_placeholder_icon_rev.style.display = "block"
+                    }
+                    if (vm.curImg <= 4) {
+                        vm.$refs.mainImg.style.display = 'block'
+                        vm.$refs.heading.style.display = 'block'
+                        vm.$refs.description.style.display = 'block'
+                        vm.$refs.sideBox.style.width = '40vw'
+                    } else {
+                        vm.$refs.mainImg.style.display = 'none'
+                        vm.$refs.heading.style.display = 'none'
+                        vm.$refs.description.style.display = 'none'
+                        vm.$refs.sideBox.style.width = '96vw'
+                    }
+                }
+            },
             changeData(e) {
                 // this.$refs.heading.style.transform = "translateX(50px)"
-                this.$refs.heading.style.transition = "0.3s ease-in-out"
-                this.$refs.heading.style.opacity = "0"
-                this.$refs.description.style.transition = "0.3s ease-in-out"
-                this.$refs.description.style.opacity = "0"
-                this.$refs.mainImg.style.transition = "0.3s ease-in-out"
-                this.$refs.mainImg.style.opacity = "0"
-                setTimeout(() => {
-                    // this.$refs.heading.style.transform = "translateX(-50px)"
-                    this.$refs.heading.style.opacity = "1"
-                    this.$refs.heading.innerHTML = this.textArr[e]
-                    this.$refs.heading.style.transition = "0s ease-in-out"
-                    this.$refs.description.style.opacity = "1"
-                    this.$refs.description.innerHTML = this.descriptionArr[e]
-                    this.$refs.description.style.transition = "0s ease-in-out"
-                    this.$refs.mainImg.style.opacity = "1"
-                    this.$refs.mainImg.src = this.imgArr[e]
-                    this.$refs.mainImg.style.transition = "0s ease-in-out"
-                }, 300);
+                if (!this.showItems) {
+                    this.$refs.heading.style.transition = "0.3s ease-in-out"
+                    this.$refs.heading.style.opacity = "0"
+                    this.$refs.description.style.transition = "0.3s ease-in-out"
+                    this.$refs.description.style.opacity = "0"
+                    this.$refs.mainImg.style.transition = "0.3s ease-in-out"
+                    this.$refs.mainImg.style.opacity = "0"
+                    setTimeout(() => {
+                        // this.$refs.heading.style.transform = "translateX(-50px)"
+                        this.$refs.heading.style.opacity = "1"
+                        this.$refs.heading.innerHTML = this.textArr[e]
+                        this.$refs.heading.style.transition = "0s ease-in-out"
+                        this.$refs.description.style.opacity = "1"
+                        this.$refs.description.innerHTML = this.descriptionArr[e]
+                        this.$refs.description.style.transition = "0s ease-in-out"
+                        this.$refs.mainImg.style.opacity = "1"
+                        this.$refs.mainImg.src = this.imgArr[e]
+                        this.$refs.mainImg.style.transition = "0s ease-in-out"
+                    }, 300);
+                }
             },
             initTilt() {
                 VanillaTilt.init(this.$refs.mainImg, {
@@ -244,6 +292,20 @@
             },
             openWork() {
                 alert('Working on it ..................')
+            },
+            showModel() {
+                this.showItems = true
+                this.moDispRefs.forEach(el => {
+                    this.$refs[el].style.display = 'none'
+                });
+                this.$refs.model.style.display = 'flex'
+            },
+            closeModel() {
+                this.showItems = false
+                this.moDispRefs.forEach(el => {
+                    this.$refs[el].style.display = 'flex'
+                });
+                this.$refs.model.style.display = 'none'
             }
         }
     }

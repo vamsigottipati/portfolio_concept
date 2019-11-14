@@ -102,6 +102,28 @@
               });
             });
 
+
+            document.getElementsByClassName("hoverable_alt").forEach(function (el) {
+              el.addEventListener("mouseover", function () {
+                self.cursorEnlarged = true;
+                self.toggleCursorSize();
+                el.style.color = "black"
+                el.addEventListener("click", function () {
+                  self.cursorEnlarged = false;
+                  self.toggleCursorSize();
+                });
+              });
+              el.addEventListener("mouseout", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+                el.style.color = "grey"
+              });
+              el.addEventListener("click", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+              });
+            });
+
             document.getElementsByClassName("clickable").forEach(function (el) {
               el.addEventListener("mousedown", function () {
                 self.cursorEnlarged = true;
