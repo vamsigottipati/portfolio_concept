@@ -127,9 +127,9 @@
                 ],
                 descriptionArr: [
                     'Social Network designed and developed for the creative BITSIAN community with prime focus on ease of usage, security and collaboraion.',
-                    '',
-                    '',
-                    '',
+                    'A complex blog built to bridge the gap between BITSIAN Alumni and students with multiple features including a merchendise portal and a chat section.',
+                    'A visual Resume Builder with high level customisation, a few pre built templates for a starup InfiniteSearches',
+                    'Resume analysing tool that reads, segments and ranks a resume based on parameters set',
                     '',
                 ],
                 scrollStop: function (callback) {
@@ -139,7 +139,7 @@
                         window.clearTimeout(isScrolling);
                         isScrolling = setTimeout(function () {
                             callback()
-                        }, 66);
+                        }, 46);
                     }, false)
                 }
             }
@@ -162,7 +162,7 @@
                             vm.curImg = vm.curImg + 1
                             vm.changeData(vm.curImg)
                         } else {
-                            vm.curImg = 4
+                            vm.curImg = 5
                             // vm.changeData(vm.curImg)
                             // show that this is end
                         }
@@ -183,13 +183,16 @@
                     if(vm.curImg <= 3) {
                         vm.$refs.scroll_placeholder_icon.style.display = "block"
                         vm.$refs.scroll_placeholder_icon_rev.style.display = "none"
+                    } else {
+                        vm.$refs.scroll_placeholder_icon.style.display = "none"
+                        vm.$refs.scroll_placeholder_icon_rev.style.display = "block"
+                    }
+                    if(vm.curImg <= 4) {
                         vm.$refs.mainImg.style.display = 'block'
                         vm.$refs.heading.style.display = 'block'
                         vm.$refs.description.style.display = 'block'
                         vm.$refs.sideBox.style.width = '40vw'
                     } else {
-                        vm.$refs.scroll_placeholder_icon.style.display = "none"
-                        vm.$refs.scroll_placeholder_icon_rev.style.display = "block"
                         vm.$refs.mainImg.style.display = 'none'
                         vm.$refs.heading.style.display = 'none'
                         vm.$refs.description.style.display = 'none'
@@ -214,6 +217,8 @@
                 // this.$refs.heading.style.transform = "translateX(50px)"
                 this.$refs.heading.style.transition = "0.3s ease-in-out"
                 this.$refs.heading.style.opacity = "0"
+                this.$refs.description.style.transition = "0.3s ease-in-out"
+                this.$refs.description.style.opacity = "0"
                 this.$refs.mainImg.style.transition = "0.3s ease-in-out"
                 this.$refs.mainImg.style.opacity = "0"
                 setTimeout(() => {
@@ -221,6 +226,9 @@
                     this.$refs.heading.style.opacity = "1"
                     this.$refs.heading.innerHTML = this.textArr[e]
                     this.$refs.heading.style.transition = "0s ease-in-out"
+                    this.$refs.description.style.opacity = "1"
+                    this.$refs.description.innerHTML = this.descriptionArr[e]
+                    this.$refs.description.style.transition = "0s ease-in-out"
                     this.$refs.mainImg.style.opacity = "1"
                     this.$refs.mainImg.src = this.imgArr[e]
                     this.$refs.mainImg.style.transition = "0s ease-in-out"
