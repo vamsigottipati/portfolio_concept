@@ -65,7 +65,7 @@
       },
       mouseIsScrolling() {
         var leftThresh = window.pageYOffset * 25 / this.$refs.works_cont.clientHeight
-        console.log((window.pageYOffset / this.y))
+        // console.log((window.pageYOffset / this.y))
         this.$refs.works_cont.style.left = -leftThresh + 'vw'
         // if((window.pageYOffset / this.y) > 0.4) {
         //     try {

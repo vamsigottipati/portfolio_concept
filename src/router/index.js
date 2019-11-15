@@ -40,17 +40,15 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeResolve((to, from, next) => {
+router.beforeResolve((to,_, next) => {
   if (to.name) {
     NProgress.start()
   }
-  console.log(from)
   next()
 })
 
-router.afterEach((to, from) => {
+router.afterEach(() => {
   NProgress.done()
-  console.log(to, from)
 })
 
 
