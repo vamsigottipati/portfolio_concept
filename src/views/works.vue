@@ -308,6 +308,7 @@
                 this.closeModel()
                 this.curImg = e
                 this.changeData(this.curImg)
+                this.setBreakPoints()
             }
         }
     }
