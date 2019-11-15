@@ -22,10 +22,10 @@ const routes = [
   },
   {
     path: '*',
-    redirect: Home    
+    redirect: Home
   },
   {
-    path:'/works',
+    path: '/works',
     name: 'works',
     component: works
   }
@@ -42,7 +42,7 @@ const router = new VueRouter({
 
 router.beforeResolve((to, from, next) => {
   if (to.name) {
-      NProgress.start()
+    NProgress.start()
   }
   console.log(from)
   next()

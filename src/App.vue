@@ -28,7 +28,7 @@
 
   export default {
     name: 'App',
-    data () {
+    data() {
       return {
         mouseX: 0,
         mouseY: 0,
@@ -42,8 +42,8 @@
       this.checkMobile()
     },
     methods: {
-      checkMobile () {
-        if(window.innerWidth < 480) {
+      checkMobile() {
+        if (window.innerWidth < 480) {
           this.setCursorStyle()
           this.$refs.outline.style.display = 'block';
           this.$refs.dot.style.display = 'block';
@@ -239,6 +239,7 @@
     transition: 0.5s;
     opacity: 1;
   }
+
   .loader_cont {
     display: none;
   }
@@ -371,6 +372,7 @@
     .scroll_placeholder {
       display: none
     }
+
     .hoverable {
       font-size: 24px;
     }

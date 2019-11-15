@@ -7,7 +7,7 @@
             style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:999;">
             Contact</p>
         <i class="fas fa-bars hoverable" ref="menu_icon" @click="this.showModel"
-            style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 990;"></i>
+            style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 999;"></i>
         <div ref="overlay" class="overlay"></div>
         <div class="sideBox" ref="sideBox"></div>
         <div ref="sideboxTextWrapper" class="sideboxTextWrapper">
@@ -16,7 +16,7 @@
         </div>
         <div class="model" ref="model">
             <i class="fas fa-times hoverable" @click="this.closeModel"
-                style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 990;"></i>
+                style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 999;"></i>
             <div
                 style="display: flex; flex-direction: column;justify-content: center;align-content: center;width: 100vw;height: 80vh;margin-top: 10vh;margin-bottom: 10vh;overflow-y: scroll;">
                 <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
@@ -35,6 +35,12 @@
             </div>
 
         </div>
+        <div ref="ending_text_cont" class="ending_text_cont">
+            <p ref="ending_text" class="ending_text"> 
+                Hey !!! <br> <br> You just got to the end. Just the page, not projects. You can find all my projects in my github <a href="https://github.com/vamsigottipati" style="margin-left: 30px;" class="link hoverable">@vamsigottipati</a> <br> <br> 
+                You can find my resume <a class="link hoverable" href="https://firebasestorage.googleapis.com/v0/b/portfolio-vamsi.appspot.com/o/resume-vamsi.pdf?alt=media&token=eadae94d-ec59-4516-b187-f69281233c173">here</a>
+            </p>
+        </div>
         <img :src="this.hashImg" ref="mainImg" class="mainImg" alt="">
         <div ref="scroll_placeholder" class="bg_shadow scroll_placeholder">
             <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon"
@@ -47,6 +53,9 @@
 
 
 <style scoped>
+    .link {
+        color: white;
+    }
     .sideBox {
         position: fixed;
         top: 10vh;
@@ -99,7 +108,7 @@
         padding-right: 15vw;
         opacity: 0;
         transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        color: #ccc;    
+        color: #ccc;
     }
 
     .mainImg {
@@ -117,7 +126,7 @@
         top: 0px;
         left: 0px;
         width: 100vw;
-        height: 700vh;
+        height: 7000vh;
         z-index: 1;
     }
 
@@ -137,19 +146,56 @@
         font-size: 30px;
     }
 
+    .ending_text_cont {
+        position: fixed;
+        padding: 0px;
+        margin: 0px;
+        z-index: 990;
+        top: 0vh;
+        left: 0vw;
+        height: 100vh;
+        width: 100vw;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        opacity: 0;
+        transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    .ending_text {
+        padding: 18vw;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin: auto;
+        text-align: left;
+        font-weight: 900;
+        align-self: center;
+        color: white;
+        font-size: 2rem;
+        transition-timing-function: ease-in-out;
+        line-height: 1.35em;
+    }
+
     @media screen and (max-width: 460px) {
         .menuItems {
             font-size: 22px;
         }
-        .heading{
+
+        .heading {
             font-size: 35px;
         }
+
         .description {
             font-size: 16px;
             padding-right: 5vw;
         }
-    }
 
+        .ending_text {
+            font-size: 1.3rem;
+            padding-top: 0vh;
+        }
+    }
 </style>
 
 
@@ -243,6 +289,7 @@
             setWidth() {
                 setTimeout(() => {
                     this.$refs.sideBox.style.width = '40vw'
+                    
                     setTimeout(() => {
                         this.$refs.mainImg.style.opacity = '1'
                         this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight) / 2 + 'px'
@@ -268,11 +315,15 @@
                         vm.$refs.heading.style.display = 'block'
                         vm.$refs.description.style.display = 'block'
                         vm.$refs.sideBox.style.width = '40vw'
+                        vm.$refs.ending_text_cont.style.display = "none"
+                        vm.$refs.ending_text_cont.style.opacity = '0'
                     } else {
                         vm.$refs.mainImg.style.display = 'none'
                         vm.$refs.heading.style.display = 'none'
                         vm.$refs.description.style.display = 'none'
                         vm.$refs.sideBox.style.width = '96vw'
+                        vm.$refs.ending_text_cont.style.display = "flex"
+                        vm.$refs.ending_text_cont.style.opacity = '1'
                     }
                 }
             },
@@ -316,12 +367,18 @@
                     this.$refs[el].style.display = 'none'
                 });
                 this.$refs.model.style.display = 'flex'
+                this.$refs.ending_text_cont.style.display = "none"
+                this.$refs.ending_text_cont.style.opacity = '0'
             },
             closeModel() {
                 this.showItems = false
                 this.moDispRefs.forEach(el => {
                     this.$refs[el].style.display = 'flex'
                 });
+                if(this.curImg > 4) {
+                    this.$refs.ending_text_cont.style.display = "flex"
+                    this.$refs.ending_text_cont.style.opacity = '1'
+                }
                 this.$refs.model.style.display = 'none'
             },
             menuItemClick(e) {

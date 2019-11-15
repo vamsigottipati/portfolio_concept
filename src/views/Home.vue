@@ -29,7 +29,11 @@
         Computer Vision</p>
     </div>
     <div ref="ending_text_cont" class="ending_text_cont">
-      <p ref="ending_text" class="ending_text"> The focal point of my work is around improving Human Computer interaction in various sectors that mainly happens through the internet. I have done a few projects that utilises web technologies like Javascript, Nodejs, Vuejs, AngularJs, ReactJs, database systems like MongoDB, Sql, Tools like travis, Jest, Chai and Mocha, Machine Learning algorithms like KNN, SVM, Linear and Logistic Regressions, Deep Learning concepts like ANN, CNN, RNN, GAN, VAE.
+      <p ref="ending_text" class="ending_text"> The focal point of my work is around improving Human Computer
+        interaction in various sectors that mainly happens through the internet. I have done a few projects that
+        utilises web technologies like Javascript, Nodejs, Vuejs, AngularJs, ReactJs, database systems like MongoDB,
+        Sql, Tools like travis, Jest, Chai and Mocha, Machine Learning algorithms like KNN, SVM, Linear and Logistic
+        Regressions, Deep Learning concepts like ANN, CNN, RNN, GAN, VAE.
       </p>
     </div>
 
@@ -76,8 +80,8 @@
     },
     components: {},
     methods: {
-      seTfontSize () {
-        if(this.x <= 460) {
+      seTfontSize() {
+        if (this.x <= 460) {
           this.$refs.ending_text.innerText = `
           The focal point of my work is around improving Human Computer interaction in various sectors that mainly happens through the internet. I have done a few projects that utilises web technologies like Javascript, Nodejs, Vuejs, AngularJs, ReactJs, database systems like MongoDB, Sql, Tools like travis, Jest, Chai and Mocha, Machine Learning algorithms like KNN, SVM, Linear and Logistic Regressions, Deep Learning concepts like ANN, CNN, RNN, GAN, VAE.
           `
@@ -85,7 +89,7 @@
       },
       setWidth() {
         setTimeout(() => {
-          
+
           this.$refs.main_box.style.transition = '0.6s cubic-bezier(0.075, 0.82, 0.165, 1)'
           this.$refs.main_box.style.width = '48vw'
           setTimeout(() => {
@@ -117,9 +121,9 @@
         this.boxWidth = 48 + addWidth
         if (this.boxWidth >= 96) {
           // if(widthRed < 2.5) {
-            this.$refs.main_box.style.width = '96vw'
-            this.$refs.main_box.style.position = "absolute"
-            this.$refs.main_box.style.top = "208vh"
+          this.$refs.main_box.style.width = '96vw'
+          this.$refs.main_box.style.position = "absolute"
+          this.$refs.main_box.style.top = "208vh"
           // } else {
           //   this.$refs.main_box.style.width = '96vw'
           //   this.$refs.main_box.style.position = "fixed"
@@ -201,7 +205,7 @@
     width: 0vw;
     left: 2vw;
     /* background: linear-gradient(45deg, #CB356B, #BD3F32); */
-    background: linear-gradient(45deg, #0575E6, #021B79  );
+    background: linear-gradient(45deg, #0575E6, #021B79);
     z-index: 900;
   }
 
@@ -216,15 +220,20 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
     opacity: 0;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .ending_text {
-    padding: 15vw;
+    padding: 18vw;
+    padding-top: 0px;
+    padding-bottom: 0px;
     margin: auto;
     text-align: left;
     font-weight: 900;
+    align-self: center;
     color: white;
     font-size: 2rem;
     transition-timing-function: ease-in-out;
@@ -317,7 +326,7 @@
     width: 90px;
     height: 180px;
     /* background: linear-gradient(45deg, #CB356B, #BD3F32); */
-    background: linear-gradient(45deg, #0575E6, #021B79  );
+    background: linear-gradient(45deg, #0575E6, #021B79);
     z-index: 980;
     left: 38px;
     top: calc(410vh - 180px);
@@ -327,15 +336,19 @@
     .teritiary_text {
       font-size: 1.3rem;
     }
+
     .ending_text {
       font-size: 1.3rem;
     }
+
     .secondary_text {
-      font-size: 4.5rem; 
+      font-size: 4.5rem;
     }
+
     .main_text {
-      font-size: 4.5rem; 
+      font-size: 4.5rem;
     }
+
     .contact_overlay {
       width: 70px;
       height: 160px;
@@ -347,25 +360,29 @@
     .teritiary_text {
       font-size: 1.3rem;
     }
+
     .ending_text {
       font-size: 1.3rem;
       padding-top: 0vh;
     }
+
     .secondary_text {
-      font-size: 2.8rem; 
+      font-size: 2.8rem;
       padding-left: 10px;
     }
+
     .main_text {
-      font-size: 3.2rem; 
+      font-size: 3.2rem;
     }
+
     .hoverable {
       font-size: 20px;
     }
+
     .contact_overlay {
       width: 55px;
       height: 140px;
       top: calc(410vh - 140px);
     }
   }
-
 </style>
