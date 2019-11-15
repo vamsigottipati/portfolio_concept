@@ -111,7 +111,7 @@
         top: 0px;
         left: 0px;
         width: 100vw;
-        height: 100000vh;
+        height: 700vh;
         z-index: 1;
     }
 
@@ -193,31 +193,28 @@
                 var vm = this
                 this.scrollStop(function () {
                     if ((window.pageYOffset - vm.prevPageOff) > 0) {
-                        // console.log('scrolling down')
+                        // scrolling down
                         if (!vm.showItems) {
                             if (vm.curImg < 4) {
                                 vm.curImg = vm.curImg + 1
                                 vm.changeData(vm.curImg)
                             } else {
                                 vm.curImg = 5
-                                // vm.changeData(vm.curImg)
                                 // show that this is end
                             }
                         }
-                        console.log(vm.curImg)
                     } else {
-                        // console.log('scrolling up');
+                        // scrolling up
                         if (!vm.showItems) {
                             if (vm.curImg > 0) {
                                 vm.curImg = vm.curImg - 1
                                 vm.changeData(vm.curImg)
                             } else {
                                 vm.curImg = 0
-                                // vm.changeData(vm.curImg)
                                 //  show this is top
+                                // alert('this is    top')
                             }
                         }
-                        console.log(vm.curImg)
                     }
                     vm.prevPageOff = window.pageYOffset
                     vm.setBreakPoints()
@@ -306,7 +303,7 @@
                     this.$refs[el].style.display = 'flex'
                 });
                 this.$refs.model.style.display = 'none'
-            }
+            },
         }
     }
 
