@@ -6,8 +6,8 @@
         <p class="hoverable" @click="$router.push('works')"
             style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:999;">
             Contact</p>
-        <i class="fas fa-bars hoverable" ref="menu_icon" @click="this.showModel"
-            style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 999;"></i>
+        <i class="fas fa-bars hoverable menu_icon" ref="menu_icon" @click="this.showModel"
+            ></i>
         <div ref="overlay" class="overlay"></div>
         <div class="sideBox" ref="sideBox"></div>
         <div ref="sideboxTextWrapper" class="sideboxTextWrapper">
@@ -15,8 +15,8 @@
             <p class="description" ref="description">{{this.curDescription}}</p>
         </div>
         <div class="model" ref="model">
-            <i class="fas fa-times hoverable" @click="this.closeModel"
-                style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 999;"></i>
+            <i class="fas fa-times hoverable menu_icon " @click="this.closeModel"
+                ></i>
             <div
                 style="display: flex; flex-direction: column;justify-content: center;align-content: center;width: 100vw;height: 80vh;margin-top: 10vh;margin-bottom: 10vh;overflow-y: scroll;">
                 <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
@@ -37,7 +37,7 @@
         </div>
         <div ref="ending_text_cont" class="ending_text_cont">
             <p ref="ending_text" class="ending_text"> 
-                Hey !!! <br> <br> You just got to the end. Just the page, not projects. You can find all my projects in my github <a href="https://github.com/vamsigottipati" style="margin-left: 30px;" class="link hoverable">@vamsigottipati</a> <br> <br> 
+                Hey !!! <br> <br> You just got to the end. Just the page, not projects. You can find all my projects in my github <a href="https://github.com/vamsigottipati" class="link hoverable">@vamsigottipati</a> <br> <br> 
                 You can find my resume <a class="link hoverable" href="https://firebasestorage.googleapis.com/v0/b/portfolio-vamsi.appspot.com/o/resume-vamsi.pdf?alt=media&token=eadae94d-ec59-4516-b187-f69281233c173">here</a>
             </p>
         </div>
@@ -123,10 +123,10 @@
 
     .overlay {
         position: absolute;
+        width: 100vw;
+        height: 10500vh;
         top: 0px;
         left: 0px;
-        width: 100vw;
-        height: 7000vh;
         z-index: 1;
     }
 
@@ -176,6 +176,9 @@
         transition-timing-function: ease-in-out;
         line-height: 1.35em;
     }
+    .menu_icon {
+        position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 999;
+    }
 
     @media screen and (max-width: 460px) {
         .menuItems {
@@ -194,6 +197,12 @@
         .ending_text {
             font-size: 1.3rem;
             padding-top: 0vh;
+        }
+        .hoverable {
+            font-size: 20px;
+        }
+        .menu_icon{
+            top: calc(10vh - 15px); left: 45px;
         }
     }
 </style>
@@ -263,6 +272,7 @@
                         if (!vm.showItems) {
                             if (vm.curImg < 4) {
                                 vm.curImg = vm.curImg + 1
+                                // vm.$refs.overlay.style.height = vm.$refs.overlay.clientHeight + (window.innerHeight/100*5) + 'px'
                                 vm.changeData(vm.curImg)
                             } else {
                                 vm.curImg = 5
@@ -275,8 +285,12 @@
                             if (vm.curImg > 0) {
                                 vm.curImg = vm.curImg - 1
                                 vm.changeData(vm.curImg)
+                                // vm.$refs.overlay.style.height = vm.$refs.overlay.clientHeight - (window.innerHeight/100*5) + 'px'
+                                // vm.$refs.overlay.scrollTop = vm.$refs.overlay.scrollHeight
+
                             } else {
                                 vm.curImg = 0
+                                // vm.$refs.overlay.style.height = '250vh'
                                 //  show this is top
                                 // alert('this is    top')
                             }

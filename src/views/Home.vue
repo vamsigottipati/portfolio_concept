@@ -1,3 +1,4 @@
+
 <template>
   <div class="home" ref="home_cont" style="text-align: center;overflow-x: hidden;">
     <p class="hoverable" @click="$router.push('works')"

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import test from '../views/test.vue'
+// import test from '../views/test.vue'
 import works from '../views/works.vue'
 
 import NProgress from 'nprogress'
@@ -15,11 +15,11 @@ const routes = [
     name: 'home',
     component: Home
   },
-  {
-    path: '/test',
-    name: 'test',
-    component: test
-  },
+  // {
+  //   path: '/test',
+  //   name: 'test',
+  //   component: test
+  // },
   {
     path: '*',
     redirect: Home
