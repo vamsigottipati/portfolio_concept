@@ -19,13 +19,13 @@
                 style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 990;"></i>
             <div
                 style="display: flex; flex-direction: column;justify-content: center;align-content: center;width: 100vw;height: 80vh;margin-top: 10vh;margin-bottom: 10vh;overflow-y: scroll;">
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Hash</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">SARC</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Resume
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(0)">Hash</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(1)">SARC</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(2)">Resume
                     Builder</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Resume
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(3)">Resume
                     Parser</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">Smart Car
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(4)">Smart Car
                     Parking</p>
             </div>
 
@@ -304,6 +304,11 @@
                 });
                 this.$refs.model.style.display = 'none'
             },
+            menuItemClick(e) {
+                this.closeModel()
+                this.curImg = e
+                this.changeData(this.curImg)
+            }
         }
     }
 
