@@ -19,13 +19,18 @@
                 style="position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 990;"></i>
             <div
                 style="display: flex; flex-direction: column;justify-content: center;align-content: center;width: 100vw;height: 80vh;margin-top: 10vh;margin-bottom: 10vh;overflow-y: scroll;">
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(0)">Hash</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(1)">SARC</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(2)">Resume
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                    @click="menuItemClick(0)">Hash</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                    @click="menuItemClick(1)">SARC</p>
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                    @click="menuItemClick(2)">Resume
                     Builder</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(3)">Resume
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                    @click="menuItemClick(3)">Resume
                     Parser</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;" @click="menuItemClick(4)">Smart Car
+                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                    @click="menuItemClick(4)">Smart Car
                     Parking</p>
             </div>
 
@@ -94,6 +99,7 @@
         padding-right: 15vw;
         opacity: 0;
         transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        color: #ccc;    
     }
 
     .mainImg {
@@ -130,6 +136,20 @@
         color: grey;
         font-size: 30px;
     }
+
+    @media screen and (max-width: 460px) {
+        .menuItems {
+            font-size: 22px;
+        }
+        .heading{
+            font-size: 35px;
+        }
+        .description {
+            font-size: 16px;
+            padding-right: 5vw;
+        }
+    }
+
 </style>
 
 
