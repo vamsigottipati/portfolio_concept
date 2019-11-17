@@ -1,15 +1,22 @@
 <template>
     <div class="pageWrapper">
-        <p class="hoverable" @click="$router.push('/')"
-            style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 999;">
-            Home</p>
         <p class="hoverable" @click="$router.push('works')"
-            style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:999;">
+            style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 999;">
             Contact</p>
+        <!-- <p class="hoverable" @click="$router.push('works')"
+            style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:999;">
+            Contact</p> -->
         <i class="fas fa-bars hoverable menu_icon" ref="menu_icon" @click="this.showModel"
             ></i>
         <div ref="overlay" class="overlay"></div>
         <div class="sideBox" ref="sideBox"></div>
+        <div class="ref_dots">
+            <div class="hoverable_placeholders_bl_alt">1</div>
+            <div class="hoverable_placeholders_bl">2</div>
+            <div class="hoverable_placeholders_bl">3</div>
+            <div class="hoverable_placeholders_bl">4</div>
+            <div class="hoverable_placeholders_bl">5</div>
+        </div>
         <div ref="sideboxTextWrapper" class="sideboxTextWrapper">
             <p class="heading " ref="heading">{{this.curText}}</p>
             <p class="description" ref="description">{{this.curDescription}}</p>
@@ -42,7 +49,7 @@
             </p>
         </div>
         <img :src="this.hashImg" ref="mainImg" class="mainImg" alt="">
-        <div ref="scroll_placeholder" class="bg_shadow scroll_placeholder">
+        <div ref="scroll_placeholder" class="bg_shadow scroll_placeholder hoverable_placeholders">
             <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon"
                 style="font-size: 12px;"></i>
             <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev"
@@ -53,6 +60,39 @@
 
 
 <style scoped>
+    .ref_dots {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 30px;
+        top: 0vh;
+        left: 35px;
+        z-index: 997;
+        justify-content: center;
+    }
+    .ref_dots>div {
+        height: 20px;
+        width: 20px;
+        background: transparent;
+        /* border: 2px solid white; */
+        /* border-radius: 10000000px; */
+        transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        align-self:  center;
+        color: gray;
+        /* border-radius: 5px; */
+    }
+    .ref_dots > div:first-child{
+        /* background: white;
+        color: black; */
+        padding: 15px;
+        font-size: 40px;
+        margin-top: 10vh;
+        margin-bottom: 40px;
+        color: white;
+    }
     .link {
         color: white;
     }
@@ -177,7 +217,7 @@
         line-height: 1.35em;
     }
     .menu_icon {
-        position: fixed; top: calc(10vh - 15px); left: 65px;font-size: 30px;z-index: 999;
+        position: fixed; top: calc(10vh - 15px); left: 35px;font-size: 30px;z-index: 999;
     }
 
     @media screen and (max-width: 460px) {
@@ -202,7 +242,7 @@
             font-size: 20px;
         }
         .menu_icon{
-            top: calc(10vh - 15px); left: 45px;
+            top: calc(10vh - 15px); left: 25px;
         }
     }
 </style>

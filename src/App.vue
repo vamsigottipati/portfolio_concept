@@ -44,9 +44,9 @@
     methods: {
       checkMobile() {
         if (window.innerWidth < 480) {
-          this.setCursorStyle()
-          this.$refs.outline.style.display = 'block';
-          this.$refs.dot.style.display = 'block';
+          // this.setCursorStyle()
+          this.$refs.outline.style.display = 'none';
+          this.$refs.dot.style.display = 'none';
         } else {
           this.setCursorStyle()
           this.$refs.outline.style.display = 'block';
@@ -103,6 +103,79 @@
               });
             });
 
+            document.getElementsByClassName("hoverable_placeholders").forEach(function (el) {
+              el.addEventListener("mouseover", function () {
+                self.cursorEnlarged = true;
+                self.toggleCursorSize();
+                el.style.border = "1.5px solid black"
+                el.style.background = "black"
+                el.addEventListener("click", function () {
+                  self.cursorEnlarged = false;
+                  self.toggleCursorSize();
+                });
+              });
+              el.addEventListener("mouseout", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+                el.style.border = "1.5px solid white"
+                el.style.background = "transparent"
+              });
+              el.addEventListener("click", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+              });
+            });
+
+            document.getElementsByClassName("hoverable_placeholders_bl_alt").forEach(function (el) {
+              el.addEventListener("mouseover", function () {
+                self.cursorEnlarged = true;
+                self.toggleCursorSize();
+                el.style.color = "black"
+                el.style.marginTop = "45px"
+                el.style.marginBottom = "45px"
+                el.addEventListener("click", function () {
+                  self.cursorEnlarged = false;
+                  self.toggleCursorSize();
+                });
+              });
+              el.addEventListener("mouseout", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+                el.style.color = "white"
+                el.style.marginTop = "40px"
+                el.style.marginBottom = "40px"
+              });
+              el.addEventListener("click", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+              });
+            });
+
+            document.getElementsByClassName("hoverable_placeholders_bl").forEach(function (el) {
+              el.addEventListener("mouseover", function () {
+                self.cursorEnlarged = true;
+                self.toggleCursorSize();
+                el.style.background = "transparent"
+                el.style.color = "black"
+                el.style.marginTop = "45px"
+                el.style.marginBottom = "45px"
+                el.addEventListener("click", function () {
+                  self.cursorEnlarged = false;
+                  self.toggleCursorSize();
+                });
+              });
+              el.addEventListener("mouseout", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+                el.style.color = "gray"
+                el.style.marginTop = "10px"
+                el.style.marginBottom = "10px"
+              });
+              el.addEventListener("click", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+              });
+            });
 
             document.getElementsByClassName("hoverable_alt").forEach(function (el) {
               el.addEventListener("mouseover", function () {
@@ -373,7 +446,11 @@
       font-size: 24px;
     }
   }
-
+  @media screen and (max-width: 460px) {
+    .scroll_placeholder {
+      display: none;
+    }
+  }
   @-webkit-keyframes moveUp {
     0% {
       transform: scaleY(0.5)

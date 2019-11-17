@@ -9,7 +9,7 @@
       Contact</p>
     <div ref="main_box" class="main_box"></div>
     <div ref="overlay" class="overlay"></div>
-    <div class="bg_shadow scroll_placeholder">
+    <div class="bg_shadow scroll_placeholder hoverable_placeholders">
       <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon" style="font-size: 12px;"></i>
       <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev"
         style="font-size: 12px;"></i>
