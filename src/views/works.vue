@@ -371,11 +371,14 @@
                         vm.$refs.sideBox.style.width = '40vw'
                         vm.$refs.ending_text_cont.style.display = "none"
                         vm.$refs.ending_text_cont.style.opacity = '0'
+                        vm.$refs.ref_dots.style.opacity = '1'
+
                     } else {
                         vm.$refs.mainImg.style.display = 'none'
                         vm.$refs.heading.style.display = 'none'
                         vm.$refs.description.style.display = 'none'
                         vm.$refs.sideBox.style.width = '96vw'
+                        vm.$refs.ref_dots.style.opacity = '0'
                         vm.$refs.ending_text_cont.style.display = "flex"
                         vm.$refs.ending_text_cont.style.opacity = '1'
                     }
