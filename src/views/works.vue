@@ -10,7 +10,7 @@
             ></i>
         <div ref="overlay" class="overlay"></div>
         <div class="sideBox" ref="sideBox"></div>
-        <div class="ref_dots">
+        <div ref="ref_dots" class="ref_dots">
             <div class="hoverable_placeholders_bl_alt">1</div>
             <div class="hoverable_placeholders_bl">2</div>
             <div class="hoverable_placeholders_bl">3</div>
@@ -177,7 +177,7 @@
         background: transparent;
         top: 0px;
         left: 0px;
-        z-index: 990;
+        z-index: 998;
         display: none;
     }
 
@@ -217,7 +217,7 @@
         line-height: 1.35em;
     }
     .menu_icon {
-        position: fixed; top: calc(10vh - 15px); left: 35px;font-size: 30px;z-index: 999;
+        position: fixed; top: calc(10vh - 15px); left: 45px;font-size: 20px;z-index: 998;
     }
 
     @media screen and (max-width: 460px) {
@@ -242,7 +242,7 @@
             font-size: 20px;
         }
         .menu_icon{
-            top: calc(10vh - 15px); left: 25px;
+            top: calc(10vh - 15px); left:40px;
         }
     }
 </style>
@@ -423,6 +423,7 @@
                 this.$refs.model.style.display = 'flex'
                 this.$refs.ending_text_cont.style.display = "none"
                 this.$refs.ending_text_cont.style.opacity = '0'
+                this.$refs.ref_dots.style.opacity = '0'
             },
             closeModel() {
                 this.showItems = false
@@ -434,6 +435,8 @@
                     this.$refs.ending_text_cont.style.opacity = '1'
                 }
                 this.$refs.model.style.display = 'none'
+                this.$refs.ref_dots.style.opacity = '1'
+
             },
             menuItemClick(e) {
                 this.closeModel()
