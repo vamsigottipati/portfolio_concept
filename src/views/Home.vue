@@ -105,7 +105,7 @@
             this.$refs.main_text_cont.style.opacity = '1'
             setTimeout(() => {
               this.$refs.main_text_cont.style.transition = '0s ease-in-out'
-            }, 1000)
+            }, 100)
           }, 300);
         }, 300);
 
