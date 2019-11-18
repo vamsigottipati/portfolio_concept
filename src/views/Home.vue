@@ -1,45 +1,44 @@
-
 <template>
-  <div class="home" ref="home_cont" style="text-align: center;overflow-x: hidden;">
-    <p class="hoverable" @click="$router.push('works')"
-      style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;">
-      Works</p>
-    <p class="hoverable" @click="$router.push('works')"
-      style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;">
-      Contact</p>
-    <div ref="main_box" class="main_box"></div>
-    <div ref="overlay" class="overlay"></div>
-    <div class="bg_shadow scroll_placeholder hoverable_placeholders">
-      <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon" style="font-size: 12px;"></i>
-      <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev"
-        style="font-size: 12px;"></i>
+  <div>
+    <div class="home" ref="home_cont" style="text-align: center;overflow-x: hidden;">
+      <p class="hoverable" @click="$router.push('works')"
+        style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;">
+        Works</p>
+      <p class="hoverable" @click="$router.push('works')"
+        style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:990;">
+        Contact</p>
+      <div ref="main_box" class="main_box"></div>
+      <div ref="overlay" class="overlay"></div>
+      <div class="bg_shadow scroll_placeholder hoverable_placeholders">
+        <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon"
+          style="font-size: 12px;"></i>
+        <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev"
+          style="font-size: 12px;"></i>
+      </div>
+      <div ref="main_text_cont" class="main_text_cont">
+        <p ref="main_text" class="main_text">Vamsi <br> Krishna</p>
+      </div>
+      <div ref="secondary_text_cont" class="secondary_text_cont">
+        <p ref="secondary_text" class="secondary_text">Developer <br> <strong>Designer</strong> </p>
+      </div>
+      <div class="contact_overlay"></div>
+      <div ref="teritiary_text_cont" class="teritiary_text_cont">
+        <p ref="teritiary_text" class="teritiary_text">I’m a developer who focuses mainly on visual aspects of an
+          application with
+          profound knowledge in full stack web development, hybrid app development,
+          UI/UX design and Intelligent System Design that includes a few concepts of
+          machine learning, Deep learning, Natural Language Processing and
+          Computer Vision</p>
+      </div>
+      <div ref="ending_text_cont" class="ending_text_cont">
+        <p ref="ending_text" class="ending_text"> The focal point of my work is around improving Human Computer
+          interaction in various sectors that mainly happens through the internet. I have done a few projects that
+          utilises web technologies like Javascript, Nodejs, Vuejs, AngularJs, ReactJs, database systems like MongoDB,
+          Sql, Tools like travis, Jest, Chai and Mocha, Machine Learning algorithms like KNN, SVM, Linear and Logistic
+          Regressions, Deep Learning concepts like ANN, CNN, RNN, GAN, VAE.
+        </p>
+      </div>
     </div>
-    <div ref="main_text_cont" class="main_text_cont">
-      <p ref="main_text" class="main_text">Vamsi <br> Krishna</p>
-    </div>
-    <div ref="secondary_text_cont" class="secondary_text_cont">
-      <p ref="secondary_text" class="secondary_text">Developer <br> <strong>Designer</strong> </p>
-    </div>
-    <div class="contact_overlay"></div>
-    <div ref="teritiary_text_cont" class="teritiary_text_cont">
-      <p ref="teritiary_text" class="teritiary_text">I’m a developer who focuses mainly on visual aspects of an
-        application with
-        profound knowledge in full stack web development, hybrid app development,
-        UI/UX design and Intelligent System Design that includes a few concepts of
-        machine learning, Deep learning, Natural Language Processing and
-        Computer Vision</p>
-    </div>
-    <div ref="ending_text_cont" class="ending_text_cont">
-      <p ref="ending_text" class="ending_text"> The focal point of my work is around improving Human Computer
-        interaction in various sectors that mainly happens through the internet. I have done a few projects that
-        utilises web technologies like Javascript, Nodejs, Vuejs, AngularJs, ReactJs, database systems like MongoDB,
-        Sql, Tools like travis, Jest, Chai and Mocha, Machine Learning algorithms like KNN, SVM, Linear and Logistic
-        Regressions, Deep Learning concepts like ANN, CNN, RNN, GAN, VAE.
-      </p>
-    </div>
-
-
-
   </div>
 </template>
 
@@ -75,9 +74,13 @@
       this.seTfontSize()
       document.body.scrollTop = 0
     },
-    destroyed: function () {
+    beforeDestroy: function () {
       window.removeEventListener('mousemove', this.mouseIsMoving);
       window.removeEventListener("scroll", this.mouseIsScrolling);
+      var el = this.$refs.home_cont,
+        elClone = el.cloneNode(true);
+
+      el.parentNode.replaceChild(elClone, el);
     },
     components: {},
     methods: {

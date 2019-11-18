@@ -1,65 +1,91 @@
 <template>
-    <div class="pageWrapper">
-        <p class="hoverable" @click="$router.push('works')"
-            style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 999;">
-            Contact</p>
-        <!-- <p class="hoverable" @click="$router.push('works')"
-            style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:999;">
-            Contact</p> -->
-        <i class="fas fa-bars hoverable menu_icon" ref="menu_icon" @click="this.showModel"
-            ></i>
-        <div ref="overlay" class="overlay"></div>
-        <div class="sideBox" ref="sideBox"></div>
-        <!-- <div ref="ref_dots" class="ref_dots">
-            <div class="hoverable_placeholders_bl_alt">1</div>
-            <div class="hoverable_placeholders_bl">2</div>
-            <div class="hoverable_placeholders_bl">3</div>
-            <div class="hoverable_placeholders_bl">4</div>
-            <div class="hoverable_placeholders_bl">5</div>
-        </div> -->
-        <div ref="sideboxTextWrapper" class="sideboxTextWrapper">
-            <p class="heading " ref="heading">{{this.curText}}</p>
-            <p class="description" ref="description">{{this.curDescription}}</p>
-        </div>
-        <div class="model" ref="model">
-            <i class="fas fa-times hoverable menu_icon " @click="this.closeModel"
-                ></i>
-            <div
-                style="display: flex; flex-direction: column;justify-content: center;align-content: center;width: 100vw;height: 80vh;margin-top: 10vh;margin-bottom: 10vh;overflow-y: scroll;">
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
-                    @click="menuItemClick(0)">Hash</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
-                    @click="menuItemClick(1)">SARC</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
-                    @click="menuItemClick(2)">Resume
-                    Builder</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
-                    @click="menuItemClick(3)">Resume
-                    Parser</p>
-                <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
-                    @click="menuItemClick(4)">Smart Car
-                    Parking</p>
+    <div>
+        <div ref="root_parent_works" class="pageWrapper">
+            <p class="hoverable" @click="$router.push('/')"
+                style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 999;">
+                Contact</p>
+            <!-- <p class="hoverable" @click="$router.push('works')"
+                      style="position: fixed;bottom: 30px; left: 10px;transform: rotate(-90deg);font-weight: 500;padding: 20px;z-index:999;">
+                      Contact</p> -->
+            <div ref="ref_dots" class="ref_dots">
+                <!-- <div class="hoverable_placeholders_bl_alt">1</div>
+                  <div class="hoverable_placeholders_bl">2</div>
+                  <div class="hoverable_placeholders_bl">3</div>
+                  <div class="hoverable_placeholders_bl">4</div>
+                  <div class="hoverable_placeholders_bl">5</div> -->
             </div>
+            <div class="slide_cont"></div>
+            <i class="fas fa-bars hoverable menu_icon" ref="menu_icon" @click="this.showModel"></i>
+            <div class="sideBox" ref="sideBox"></div>
+            <div ref="sideboxTextWrapper" class="sideboxTextWrapper">
+                <p class="heading " ref="heading">{{this.curText}}</p>
+                <p class="description" ref="description">{{this.curDescription}}</p>
+            </div>
+            <div class="model" ref="model">
+                <i class="fas fa-times hoverable menu_icon " @click="this.closeModel"></i>
+                <div
+                    style="display: flex; flex-direction: column;justify-content: center;align-content: center;width: 100vw;height: 80vh;margin-top: 10vh;margin-bottom: 10vh;overflow-y: scroll;">
+                    <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                        @click="menuItemClick(0)">
+                        Hash
+                    </p>
+                    <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                        @click="menuItemClick(1)">
+                        SARC
+                    </p>
+                    <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                        @click="menuItemClick(2)">
+                        Resume
+                        Builder</p>
+                    <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                        @click="menuItemClick(3)">
+                        Resume
+                        Parser</p>
+                    <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;"
+                        @click="menuItemClick(4)">
+                        Smart Car
+                        Parking</p>
+                </div>
 
-        </div>
-        <div ref="ending_text_cont" class="ending_text_cont">
-            <p ref="ending_text" class="ending_text"> 
-                Hey !!! <br> <br> You just got to the end. Just the page, not projects. You can find all my projects in my github <a href="https://github.com/vamsigottipati" class="link hoverable">@vamsigottipati</a> <br> <br> 
-                You can find my resume <a class="link hoverable" href="https://firebasestorage.googleapis.com/v0/b/portfolio-vamsi.appspot.com/o/resume-vamsi.pdf?alt=media&token=eadae94d-ec59-4516-b187-f69281233c173">here</a>
-            </p>
-        </div>
-        <img :src="this.hashImg" ref="mainImg" class="mainImg" alt="">
-        <div ref="scroll_placeholder" class="bg_shadow scroll_placeholder hoverable_placeholders">
-            <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon"
-                style="font-size: 12px;"></i>
-            <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev"
-                style="font-size: 12px;"></i>
+            </div>
+            <div ref="ending_text_cont" class="ending_text_cont">
+                <p ref="ending_text" class="ending_text">
+                    Hey !!! <br> <br> You just got to the end. Just the page, not projects. You can find all my projects
+                    in my
+                    github <a href="https://github.com/vamsigottipati" class="link hoverable">@vamsigottipati</a> <br>
+                    <br>
+                    You can find my resume <a class="link hoverable"
+                        href="https://firebasestorage.googleapis.com/v0/b/portfolio-vamsi.appspot.com/o/resume-vamsi.pdf?alt=media&token=eadae94d-ec59-4516-b187-f69281233c173">here</a>
+                </p>
+            </div>
+            <img :src="this.hashImg" ref="mainImg" class="mainImg" alt="">
+            <div ref="scroll_placeholder" class="bg_shadow scroll_placeholder hoverable_placeholders">
+                <i ref="scroll_placeholder_icon" class="fas fa-chevron-down scroll_placeholder_icon"
+                    style="font-size: 12px;"></i>
+                <i ref="scroll_placeholder_icon_rev" class="fas fa-chevron-up scroll_placeholder_icon_rev"
+                    style="font-size: 12px;"></i>
+            </div>
         </div>
     </div>
 </template>
 
 
 <style scoped>
+    .slide_cont {
+        display: flex;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 600vh;
+        width: 100vw;
+        flex-direction: column;
+    }
+
+    .slide {
+        height: 100vh;
+        width: 100vw;
+    }
+
     .ref_dots {
         position: fixed;
         display: flex;
@@ -71,18 +97,21 @@
         z-index: 997;
         justify-content: center;
     }
+
     .ref_dots>div {
         background: transparent;
         transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
+
     .hoverable_placeholders_bl {
         height: 20px;
         width: 20px;
         margin-top: 10px;
         margin-bottom: 10px;
-        align-self:  center;
+        align-self: center;
         color: gray;
     }
+
     .hoverable_placeholders_bl_alt {
         padding: 15px;
         font-size: 40px;
@@ -91,9 +120,11 @@
         color: white;
         align-self: center;
     }
+
     .link {
         color: white;
     }
+
     .sideBox {
         position: fixed;
         top: 10vh;
@@ -214,8 +245,13 @@
         transition-timing-function: ease-in-out;
         line-height: 1.35em;
     }
+
     .menu_icon {
-        position: fixed; top: calc(10vh - 15px); left: 45px;font-size: 20px;z-index: 998;
+        position: fixed;
+        top: calc(10vh - 15px);
+        left: 45px;
+        font-size: 20px;
+        z-index: 998;
     }
 
     @media screen and (max-width: 460px) {
@@ -236,11 +272,14 @@
             font-size: 1.3rem;
             padding-top: 0vh;
         }
+
         .hoverable {
             font-size: 20px;
         }
-        .menu_icon{
-            top: calc(10vh - 15px); left:40px;
+
+        .menu_icon {
+            top: calc(10vh - 15px);
+            left: 40px;
         }
     }
 </style>
@@ -259,8 +298,6 @@
                 builderImg: require('../assets/builder.png'),
                 parserImg: require('../assets/parser.png'),
                 scpImg: require('../assets/hash.png'),
-                scrollRatio: window.pageYOffset,
-                prevPageOff: 0,
                 curImg: 0,
                 curText: 'Hash',
                 curDescription: 'Social Network designed and developed for the creative BITSIAN community with prime focus on ease of usage, security and collaboraion.',
@@ -279,18 +316,19 @@
                     'Resume analysing tool that reads, segments and ranks a resume based on parameters set',
                     'Smart car parking system that registers and acknowledges when, where, how and who enters the UST Global campus. ', /* Depends mostly on detection and tracking of cars and their number plates. */
                 ],
+                moDispRefs: ['mainImg', 'scroll_placeholder', 'sideboxTextWrapper', 'menu_icon', 'sideBox'],
+                showItems: false,
                 scrollStop: function (callback) {
                     if (!callback || typeof callback !== 'function') return;
                     var isScrolling;
-                    window.addEventListener('scroll', function () {
+                    window.addEventListener('wheel', function (e) {
+                        e.preventDefault()
                         window.clearTimeout(isScrolling);
                         isScrolling = setTimeout(function () {
-                            callback()
-                        }, 36);
+                            callback(e)
+                        }, 66);
                     }, false)
                 },
-                moDispRefs: ['mainImg', 'scroll_placeholder', 'sideboxTextWrapper', 'menu_icon', 'sideBox'],
-                showItems: false,
             }
         },
         mounted: function () {
@@ -301,47 +339,51 @@
             }, 1000);
             this.afterScroll()
         },
+        beforeDestroy: function () {
+            var el = this.$refs.root_parent_works,
+                elClone = el.cloneNode(true);
+
+            el.parentNode.replaceChild(elClone, el);
+            window.addEventListener('wheel', function (event) {
+                event.stopPropagation();
+            }, true);
+        },
         methods: {
+            scrollHandler(e) {
+                e.preventDefault()
+            },
             afterScroll() {
                 var vm = this
-                this.scrollStop(function () {
-                    if ((window.pageYOffset - vm.prevPageOff) > 0) {
-                        // scrolling down
+                this.scrollStop(function (e) {
+                    if (e.deltaY > 0) {
+                        window.scrollBy(0, window.innerHeight)
                         if (!vm.showItems) {
                             if (vm.curImg < 4) {
                                 vm.curImg = vm.curImg + 1
-                                // vm.$refs.overlay.style.height = vm.$refs.overlay.clientHeight + (window.innerHeight/100*5) + 'px'
                                 vm.changeData(vm.curImg)
                             } else {
                                 vm.curImg = 5
-                                // show that this is end
                             }
                         }
-                    } else {
-                        // scrolling up
+                    }
+                    else if (e.deltaY < 0) {
+                        window.scrollBy(0, -window.innerHeight)
                         if (!vm.showItems) {
                             if (vm.curImg > 0) {
                                 vm.curImg = vm.curImg - 1
                                 vm.changeData(vm.curImg)
-                                // vm.$refs.overlay.style.height = vm.$refs.overlay.clientHeight - (window.innerHeight/100*5) + 'px'
-                                // vm.$refs.overlay.scrollTop = vm.$refs.overlay.scrollHeight
-
                             } else {
                                 vm.curImg = 0
-                                // vm.$refs.overlay.style.height = '250vh'
-                                //  show this is top
-                                // alert('this is    top')
                             }
                         }
                     }
-                    vm.prevPageOff = window.pageYOffset
                     vm.setBreakPoints()
                 })
             },
             setWidth() {
                 setTimeout(() => {
                     this.$refs.sideBox.style.width = '40vw'
-                    
+
                     setTimeout(() => {
                         this.$refs.mainImg.style.opacity = '1'
                         this.$refs.mainImg.style.top = (window.innerHeight - this.$refs.mainImg.clientHeight) / 2 + 'px'
@@ -351,8 +393,7 @@
                         this.$refs.description.style.opacity = '1'
                     }, 700);
                 }, 500);
-            },
-            setBreakPoints() {
+            }, setBreakPoints() {
                 var vm = this
                 if (!vm.showItems) {
                     if (vm.curImg <= 3) {
@@ -424,19 +465,19 @@
                 this.$refs.model.style.display = 'flex'
                 this.$refs.ending_text_cont.style.display = "none"
                 this.$refs.ending_text_cont.style.opacity = '0'
-                this.$refs.ref_dots.style.opacity = '0'
+                //   this.$refs.ref_dots.style.opacity = '0'
             },
             closeModel() {
                 this.showItems = false
                 this.moDispRefs.forEach(el => {
                     this.$refs[el].style.display = 'flex'
                 });
-                if(this.curImg > 4) {
+                if (this.curImg > 4) {
                     this.$refs.ending_text_cont.style.display = "flex"
                     this.$refs.ending_text_cont.style.opacity = '1'
                 }
                 this.$refs.model.style.display = 'none'
-                this.$refs.ref_dots.style.opacity = '1'
+                //   this.$refs.ref_dots.style.opacity = '1'
 
             },
             menuItemClick(e) {
@@ -449,6 +490,3 @@
     }
 
 </script>
-
-
-
