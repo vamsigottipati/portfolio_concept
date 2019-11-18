@@ -10,13 +10,13 @@
             ></i>
         <div ref="overlay" class="overlay"></div>
         <div class="sideBox" ref="sideBox"></div>
-        <div ref="ref_dots" class="ref_dots">
+        <!-- <div ref="ref_dots" class="ref_dots">
             <div class="hoverable_placeholders_bl_alt">1</div>
             <div class="hoverable_placeholders_bl">2</div>
             <div class="hoverable_placeholders_bl">3</div>
             <div class="hoverable_placeholders_bl">4</div>
             <div class="hoverable_placeholders_bl">5</div>
-        </div>
+        </div> -->
         <div ref="sideboxTextWrapper" class="sideboxTextWrapper">
             <p class="heading " ref="heading">{{this.curText}}</p>
             <p class="description" ref="description">{{this.curDescription}}</p>
@@ -72,26 +72,24 @@
         justify-content: center;
     }
     .ref_dots>div {
+        background: transparent;
+        transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    .hoverable_placeholders_bl {
         height: 20px;
         width: 20px;
-        background: transparent;
-        /* border: 2px solid white; */
-        /* border-radius: 10000000px; */
-        transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
         margin-top: 10px;
         margin-bottom: 10px;
         align-self:  center;
         color: gray;
-        /* border-radius: 5px; */
     }
-    .ref_dots > div:first-child{
-        /* background: white;
-        color: black; */
+    .hoverable_placeholders_bl_alt {
         padding: 15px;
         font-size: 40px;
-        margin-top: 10vh;
-        margin-bottom: 40px;
+        margin-top: 25px;
+        margin-bottom: 25px;
         color: white;
+        align-self: center;
     }
     .link {
         color: white;

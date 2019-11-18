@@ -142,8 +142,8 @@
                 self.cursorEnlarged = false;
                 self.toggleCursorSize();
                 el.style.color = "white"
-                el.style.marginTop = "40px"
-                el.style.marginBottom = "40px"
+                el.style.marginTop = "25px"
+                el.style.marginBottom = "25px"
               });
               el.addEventListener("click", function () {
                 self.cursorEnlarged = false;
