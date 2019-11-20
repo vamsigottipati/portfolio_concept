@@ -151,6 +151,27 @@
               });
             });
 
+            document.getElementsByClassName("hoverable_svg").forEach(function (el) {
+              el.addEventListener("mouseover", function () {
+                self.cursorEnlarged = true;
+                self.toggleCursorSize();
+                el.style.fill = "black"
+                el.addEventListener("click", function () {
+                  self.cursorEnlarged = false;
+                  self.toggleCursorSize();
+                });
+              });
+              el.addEventListener("mouseout", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+                el.style.fill = "white"
+              });
+              el.addEventListener("click", function () {
+                self.cursorEnlarged = false;
+                self.toggleCursorSize();
+              });
+            });
+
             document.getElementsByClassName("hoverable_placeholders_bl").forEach(function (el) {
               el.addEventListener("mouseover", function () {
                 self.cursorEnlarged = true;
