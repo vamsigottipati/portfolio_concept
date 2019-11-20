@@ -167,6 +167,8 @@
   .menuItems {
     color: grey;
     font-size: 22px;
+    text-decoration: none;
+    text-decoration-color: #fff;
   }
 
   .menuItems:first-of-type {
@@ -180,7 +182,10 @@
     font-size: 34px;
     margin-top: 40px;
     margin-bottom: 40px;
-    text-decoration: line-through;
+    text-decoration-line: line-through;
+    /* text-decoration-color: #fff; */
+    text-decoration-style: solid;
+    color: gray;
   }
 
   @media screen and (max-width: 768px) {}

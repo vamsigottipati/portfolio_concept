@@ -174,6 +174,7 @@
                 self.cursorEnlarged = true;
                 self.toggleCursorSize();
                 el.style.color = "black"
+                el.style.textDecorationColor = 'gray';
                 el.addEventListener("click", function () {
                   self.cursorEnlarged = false;
                   self.toggleCursorSize();
@@ -183,6 +184,7 @@
                 self.cursorEnlarged = false;
                 self.toggleCursorSize();
                 el.style.color = "grey"
+                el.style.textDecorationColor = '#fff';
               });
               el.addEventListener("click", function () {
                 self.cursorEnlarged = false;
