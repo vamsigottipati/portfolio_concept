@@ -126,75 +126,46 @@
               });
             });
 
-            document.getElementsByClassName("hoverable_placeholders_bl_alt").forEach(function (el) {
-              el.addEventListener("mouseover", function () {
-                self.cursorEnlarged = true;
-                self.toggleCursorSize();
-                el.style.color = "black"
-                el.style.marginTop = "45px"
-                el.style.marginBottom = "45px"
-                el.addEventListener("click", function () {
-                  self.cursorEnlarged = false;
-                  self.toggleCursorSize();
-                });
-              });
-              el.addEventListener("mouseout", function () {
-                self.cursorEnlarged = false;
-                self.toggleCursorSize();
-                el.style.color = "white"
-                el.style.marginTop = "25px"
-                el.style.marginBottom = "25px"
-              });
-              el.addEventListener("click", function () {
-                self.cursorEnlarged = false;
-                self.toggleCursorSize();
-              });
-            });
+            // document.getElementsByClassName("refDotHoverable_alt").forEach(function (el) {
+            //   el.addEventListener("mouseover", function () {
+            //     self.cursorEnlarged = true;
+            //     self.toggleCursorSize();
+            //     el.style.marginTop = "65px"
+            //     el.style.marginBottom = "65px"
+            //   });
+            //   el.addEventListener("mouseout", function () {
+            //     self.cursorEnlarged = false;
+            //     self.toggleCursorSize();
+            //     el.style.marginTop = "40px"
+            //     el.style.marginBottom = "40px"
+            //   });
+            // });
+
+            // document.getElementsByClassName("refDotHoverable").forEach(function (el) {
+            //   el.addEventListener("mouseover", function () {
+            //     self.cursorEnlarged = true;
+            //     self.toggleCursorSize();
+            //     el.style.marginTop = "65px"
+            //     el.style.marginBottom = "65px"
+            //   });
+            //   el.addEventListener("mouseout", function () {
+            //     self.cursorEnlarged = false;
+            //     self.toggleCursorSize();
+            //     el.style.marginTop = "12px"
+            //     el.style.marginBottom = "12px"
+            //   });
+            // });
 
             document.getElementsByClassName("hoverable_svg").forEach(function (el) {
               el.addEventListener("mouseover", function () {
                 self.cursorEnlarged = true;
                 self.toggleCursorSize();
                 el.style.fill = "black"
-                el.addEventListener("click", function () {
-                  self.cursorEnlarged = false;
-                  self.toggleCursorSize();
-                });
               });
               el.addEventListener("mouseout", function () {
                 self.cursorEnlarged = false;
                 self.toggleCursorSize();
                 el.style.fill = "white"
-              });
-              el.addEventListener("click", function () {
-                self.cursorEnlarged = false;
-                self.toggleCursorSize();
-              });
-            });
-
-            document.getElementsByClassName("hoverable_placeholders_bl").forEach(function (el) {
-              el.addEventListener("mouseover", function () {
-                self.cursorEnlarged = true;
-                self.toggleCursorSize();
-                el.style.background = "transparent"
-                el.style.color = "black"
-                el.style.marginTop = "45px"
-                el.style.marginBottom = "45px"
-                el.addEventListener("click", function () {
-                  self.cursorEnlarged = false;
-                  self.toggleCursorSize();
-                });
-              });
-              el.addEventListener("mouseout", function () {
-                self.cursorEnlarged = false;
-                self.toggleCursorSize();
-                el.style.color = "gray"
-                el.style.marginTop = "10px"
-                el.style.marginBottom = "10px"
-              });
-              el.addEventListener("click", function () {
-                self.cursorEnlarged = false;
-                self.toggleCursorSize();
               });
             });
 
