@@ -5,7 +5,7 @@
         style="position: fixed;top: 20px; right: 20px;transform: rotate(90deg);font-weight: 500;padding: 20px;z-index: 990;">
         Works</p>
         <p class="hoverable contact_hoverable" @click="$router.push('works')"
-        style="position: fixed;bottom: 3vh;font-weight: 500;padding: 0px;z-index:990;margin: 0px;writing-mode: vertical-rl;text-orientation: sideways;transform: rotate(180deg);">
+        style="position: fixed;bottom: 3vh;left: calc(4vw);font-weight: 500;padding: 0px;z-index:990;margin: 0px;writing-mode: vertical-rl;text-orientation: sideways;transform: rotate(180deg);">
         Contact</p>
       <div ref="main_box" class="main_box"></div>
       <div ref="overlay" class="overlay"></div>

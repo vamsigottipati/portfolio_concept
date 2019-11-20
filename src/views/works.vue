@@ -15,7 +15,7 @@
       </g>
     </svg>
     <div class="navCont">
-      <svg class="upArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <!-- <svg class="upArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <g data-name="Layer 2">
           <g data-name="arrow-up">
             <rect width="24" height="24" transform="rotate(90 12 12)" opacity="0" />
@@ -23,7 +23,7 @@
               d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1 2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1z" />
           </g>
         </g>
-      </svg>
+      </svg> -->
       <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
         Hash 
       </p>
@@ -39,7 +39,7 @@
       <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
         Smart Car
         Parking </p>
-      <svg class="downArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <!-- <svg class="downArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <g data-name="Layer 2">
           <g data-name="arrow-downward">
             <rect width="24" height="24" transform="rotate(-90 12 12)" opacity="0" />
@@ -47,7 +47,7 @@
               d="M12 17a1.72 1.72 0 0 1-1.33-.64l-4.21-5.1a2.1 2.1 0 0 1-.26-2.21A1.76 1.76 0 0 1 7.79 8h8.42a1.76 1.76 0 0 1 1.59 1.05 2.1 2.1 0 0 1-.26 2.21l-4.21 5.1A1.72 1.72 0 0 1 12 17z" />
           </g>
         </g>
-      </svg>
+      </svg> -->
     </div>
     <div ref="mainBox" class="mainBox">
       <p ref="heading" class="heading">Hash</p>
@@ -207,7 +207,7 @@
 
   .menuItems {
     color: grey;
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .menuItems:first-of-type {
@@ -218,7 +218,7 @@
     margin-bottom: 10vh;
   }
   .active_menuItem {
-    font-size: 28px;
+    font-size: 34px;
     margin-top: 40px;
     margin-bottom: 40px;
     text-decoration: line-through;
