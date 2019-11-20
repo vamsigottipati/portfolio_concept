@@ -24,13 +24,13 @@
           </g>
         </g>
       </svg> -->
-      <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
+      <p class="hoverable_alt menuItems active_menuItem" style="text-align: center;align-self: center;">
         Hash 
       </p>
       <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
         SARC 
       </p>
-      <p class="hoverable_alt menuItems active_menuItem" style="text-align: center;align-self: center;">
+      <p class="hoverable_alt menuItems " style="text-align: center;align-self: center;">
         Resume
         Builder </p>
       <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
@@ -58,16 +58,9 @@
     <div
       style="position: fixed;left: 42vw;top: 0px;display: flex;flex-direction: row;width: 58vw;height: 100vh;z-index: 980;background: transparent;justify-content: center;">
       <img ref="mainImg" :src="this.hashImg" class="mainImg" alt="">
-      <!-- <div class="refDots">
-        <div class="inactive refDotHoverable" ref="1"></div>
-        <div class="active refDotHoverable_alt" ref="2"></div>
-        <div class="inactive refDotHoverable" ref="3"></div>
-        <div class="inactive refDotHoverable" ref="4"></div>
-        <div class="inactive refDotHoverable" ref="5"></div>
-        <div class="inactive refDotHoverable" ref="6"></div>
-      </div> -->
     </div>
     <div class="scrollOverlay"></div>
+    <div ref="model" class="model"></div>
   </div>
 </template>
 
@@ -141,40 +134,6 @@
     margin-left: -12vw;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     opacity: 0;
-  }
-
-  .refDots {
-    align-self: center;
-    height: auto;
-    width: 20px;
-    background: transparent;
-    margin-left: auto;
-    margin-right: 40px;
-    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .active {
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    border: 15px solid black;
-    box-shadow: 0 0 0 3px white;
-    align-self: center;
-  }
-
-  .inactive {
-    width: 15px;
-    height: 15px;
-    background: white;
-    border-radius: 50%;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    align-self: center;
   }
 
   .upArrow {
