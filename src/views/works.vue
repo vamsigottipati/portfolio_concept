@@ -14,7 +14,7 @@
         </g>
       </g>
     </svg>
-    <div class="navCont">
+    <div class="navCont" ref="navCont">
       <!-- <svg class="upArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <g data-name="Layer 2">
           <g data-name="arrow-up">
@@ -24,19 +24,19 @@
           </g>
         </g>
       </svg> -->
-      <p class="hoverable_alt menuItems active_menuItem" style="text-align: center;align-self: center;">
-        Hash 
+      <p class="hoverable_alt menuItems active_menuItem" @click="scrollToPos(0)" style="text-align: center;align-self: center;">
+        Hash
       </p>
-      <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
-        SARC 
+      <p class="hoverable_alt menuItems" @click="scrollToPos(1)" style="text-align: center;align-self: center;">
+        SARC
       </p>
-      <p class="hoverable_alt menuItems " style="text-align: center;align-self: center;">
+      <p class="hoverable_alt menuItems " @click="scrollToPos(2)" style="text-align: center;align-self: center;">
         Resume
         Builder </p>
-      <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
+      <p class="hoverable_alt menuItems" @click="scrollToPos(3)" style="text-align: center;align-self: center;">
         Resume
         Parser </p>
-      <p class="hoverable_alt menuItems" style="text-align: center;align-self: center;">
+      <p class="hoverable_alt menuItems" @click="scrollToPos(4)" style="text-align: center;align-self: center;">
         Smart Car
         Parking </p>
       <!-- <svg class="downArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -50,14 +50,12 @@
       </svg> -->
     </div>
     <div ref="mainBox" class="mainBox">
-      <p ref="heading" class="heading">Hash</p>
-      <p ref="description" class="description">Social Network designed and developed for the creative BITSIAN community
-        with prime focus
-        on ease of usage, security and collaboraion.</p>
+      <p ref="heading" class="heading">{{this.textArr[this.currentSlideNum]}}</p>
+      <p ref="description" class="description">{{this.descriptionArr[this.currentSlideNum]}}</p>
     </div>
     <div
       style="position: fixed;left: 42vw;top: 0px;display: flex;flex-direction: row;width: 58vw;height: 100vh;z-index: 980;background: transparent;justify-content: center;">
-      <img ref="mainImg" :src="this.hashImg" class="mainImg" alt="">
+      <img ref="mainImg" :src="this.imgArr[this.currentSlideNum]" class="mainImg" alt="">
     </div>
     <div class="scrollOverlay"></div>
     <div ref="model" class="model"></div>
@@ -74,7 +72,7 @@
     top: 0px;
     left: 0px;
     width: 100vw;
-    height: 100vh;
+    height: 700vh;
   }
 
   .mainBox {
@@ -151,7 +149,7 @@
   }
 
   .navCont {
-    position: absolute;
+    position: fixed;
     z-index: 999;
     background: transparent;
     height: 100vh;
@@ -161,6 +159,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   }
 
@@ -169,6 +168,7 @@
     font-size: 22px;
     text-decoration: none;
     text-decoration-color: #fff;
+    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .menuItems:first-of-type {
@@ -178,8 +178,10 @@
   .menuItems:last-of-type {
     margin-bottom: 10vh;
   }
+
   .active_menuItem {
     font-size: 34px;
+    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     margin-top: 40px;
     margin-bottom: 40px;
     text-decoration-line: line-through;
@@ -207,13 +209,28 @@
       return {
         status: true,
         scrollVal: 0,
-        isScrolling: 0,
         demo: 'asdasdasdasd',
         hashImg: require('../assets/hash.png'),
         sarcImg: require('../assets/sarc.png'),
         builderImg: require('../assets/builder.png'),
         parserImg: require('../assets/parser.png'),
         scpImg: require('../assets/hash.png'),
+        descriptionArr: [
+          'Social Network designed and developed for the creative BITSIAN community with prime focus on ease of usage, security and collaboraion.',
+          'A complex blog built to bridge the gap between BITSIAN Alumni and students with multiple features including a merchendise portal and a chat section.',
+          'A visual Resume Builder with high level customisation, a few pre built templates for a starup InfiniteSearches',
+          'Resume analysing tool that reads, segments and ranks a resume based on parameters set',
+          'Smart car parking system that registers and acknowledges when, where, how and who enters the UST Global campus. ', /* Depends mostly on detection and tracking of cars and their number plates. */
+        ],
+        textArr: [
+          `Hash`,
+          `SARC`,
+          `Resume  Builder`,
+          `Resume Parser`,
+          `Smart Car Parking`
+        ],
+        imgArr: [require('../assets/hash.png'), require('../assets/sarc.png'), require('../assets/builder.png'), require('../assets/parser.png'), require('../assets/hash.png')],
+        currentSlideNum: 0
       }
     },
     mounted: function () {
@@ -222,8 +239,10 @@
       setTimeout(() => {
         this.initTilt()
       }, 1000);
+      window.addEventListener('scroll', this.isScrolling)
     },
     beforeDestroy: function () {
+      window.removeEventListener('scroll', this.isScrolling)
     },
     methods: {
       setScrolling() {
@@ -244,6 +263,115 @@
           this.$refs.description.style.opacity = '1'
         }, 600);
         this.$refs.mainBox.style.opacity = '1'
+      },
+      scrollToPos(e) {
+        window.scrollTo(0, window.innerHeight*e + 1)
+      },
+      isScrolling() {
+        var counter = 0
+        if (window.pageYOffset < 1 * window.innerHeight && window.pageYOffset >= 0) {
+          this.currentSlideNum = 0
+          counter = 0
+          this.$refs.navCont.children.forEach(el => {
+
+            if (el.classList.contains("active_menuItem")) {
+              if (counter == this.currentSlideNum) {
+                console.log('yoyoyoyo')
+              } else {
+                el.classList.remove('active_menuItem')
+              }
+            } else {
+              if (counter == this.currentSlideNum) {
+                el.classList.add('active_menuItem')
+              }
+            }
+            counter = counter + 1
+          })
+        } else {
+          if (window.pageYOffset < 2 * window.innerHeight && window.pageYOffset >= 1 * window.innerHeight) {
+            this.currentSlideNum = 1
+            counter = 0
+            this.$refs.navCont.children.forEach(el => {
+
+              if (el.classList.contains("active_menuItem")) {
+                if (counter == this.currentSlideNum) {
+                  console.log('yoyoyoyo')
+                } else {
+                  el.classList.remove('active_menuItem')
+                }
+              } else {
+                if (counter == this.currentSlideNum) {
+                  el.classList.add('active_menuItem')
+                }
+              }
+              counter = counter + 1
+            })
+          } else {
+            if (window.pageYOffset < 3 * window.innerHeight && window.pageYOffset >= 2 * window.innerHeight) {
+              this.currentSlideNum = 2
+              counter = 0
+              this.$refs.navCont.children.forEach(el => {
+
+                if (el.classList.contains("active_menuItem")) {
+                  if (counter == this.currentSlideNum) {
+                    console.log('yoyoyoyo')
+                  } else {
+                    el.classList.remove('active_menuItem')
+                  }
+                } else {
+                  if (counter == this.currentSlideNum) {
+                    el.classList.add('active_menuItem')
+                  }
+                }
+                counter = counter + 1
+              })
+            } else {
+              if (window.pageYOffset < 4 * window.innerHeight && window.pageYOffset >= 3 * window.innerHeight) {
+                this.currentSlideNum = 3
+                counter = 0
+                this.$refs.navCont.children.forEach(el => {
+
+                  if (el.classList.contains("active_menuItem")) {
+                    if (counter == this.currentSlideNum) {
+                      console.log('yoyoyoyo')
+                    } else {
+                      el.classList.remove('active_menuItem')
+                    }
+                  } else {
+                    if (counter == this.currentSlideNum) {
+                      el.classList.add('active_menuItem')
+                    }
+                  }
+                  counter = counter + 1
+                })
+              } else {
+                if (window.pageYOffset < 5 * window.innerHeight && window.pageYOffset >= 4 * window.innerHeight) {
+                  this.currentSlideNum = 4
+                  counter = 0
+                  this.$refs.navCont.children.forEach(el => {
+
+                    if (el.classList.contains("active_menuItem")) {
+                      if (counter == this.currentSlideNum) {
+                        console.log('yoyoyoyo')
+                      } else {
+                        el.classList.remove('active_menuItem')
+                      }
+                    } else {
+                      if (counter == this.currentSlideNum) {
+                        el.classList.add('active_menuItem')
+                      }
+                    }
+                    counter = counter + 1
+                  })
+                } else {
+                  if (window.pageYOffset <= 6 * window.innerHeight && window.pageYOffset >= 5 * window.innerHeight) {
+                    console.log('end')
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
 
