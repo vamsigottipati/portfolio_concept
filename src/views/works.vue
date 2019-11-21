@@ -15,7 +15,8 @@
       </g>
     </svg>
     <div class="navCont" ref="navCont">
-      <!-- <svg class="upArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg class="upArrow hoverable_svg" @click="scrollToPos(currentSlideNum-1)" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24">
         <g data-name="Layer 2">
           <g data-name="arrow-up">
             <rect width="24" height="24" transform="rotate(90 12 12)" opacity="0" />
@@ -23,23 +24,27 @@
               d="M16.21 16H7.79a1.76 1.76 0 0 1-1.59-1 2.1 2.1 0 0 1 .26-2.21l4.21-5.1a1.76 1.76 0 0 1 2.66 0l4.21 5.1A2.1 2.1 0 0 1 17.8 15a1.76 1.76 0 0 1-1.59 1z" />
           </g>
         </g>
-      </svg> -->
-      <p class="hoverable_alt menuItems active_menuItem" @click="scrollToPos(0)" style="text-align: center;align-self: center;">
-        Hash
-      </p>
-      <p class="hoverable_alt menuItems" @click="scrollToPos(1)" style="text-align: center;align-self: center;">
-        SARC
-      </p>
-      <p class="hoverable_alt menuItems " @click="scrollToPos(2)" style="text-align: center;align-self: center;">
-        Resume
-        Builder </p>
-      <p class="hoverable_alt menuItems" @click="scrollToPos(3)" style="text-align: center;align-self: center;">
-        Resume
-        Parser </p>
-      <p class="hoverable_alt menuItems" @click="scrollToPos(4)" style="text-align: center;align-self: center;">
-        Smart Car
-        Parking </p>
-      <!-- <svg class="downArrow hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      </svg>
+      <div style="height: 70vh;display: flex; flex-direction: column;justify-content: center;align-items: center;">
+        <p class="hoverable_alt menuItems active_menuItem" @click="scrollToPos(0)"
+          style="text-align: center;align-self: center;">
+          Hash
+        </p>
+        <p class="hoverable_alt menuItems" @click="scrollToPos(1)" style="text-align: center;align-self: center;">
+          SARC
+        </p>
+        <p class="hoverable_alt menuItems " @click="scrollToPos(2)" style="text-align: center;align-self: center;">
+          Resume
+          Builder </p>
+        <p class="hoverable_alt menuItems" @click="scrollToPos(3)" style="text-align: center;align-self: center;">
+          Resume
+          Parser </p>
+        <p class="hoverable_alt menuItems" @click="scrollToPos(4)" style="text-align: center;align-self: center;">
+          Smart Car
+          Parking </p>
+      </div>
+      <svg class="downArrow hoverable_svg" @click="scrollToPos(currentSlideNum+1)" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24">
         <g data-name="Layer 2">
           <g data-name="arrow-downward">
             <rect width="24" height="24" transform="rotate(-90 12 12)" opacity="0" />
@@ -47,7 +52,7 @@
               d="M12 17a1.72 1.72 0 0 1-1.33-.64l-4.21-5.1a2.1 2.1 0 0 1-.26-2.21A1.76 1.76 0 0 1 7.79 8h8.42a1.76 1.76 0 0 1 1.59 1.05 2.1 2.1 0 0 1-.26 2.21l-4.21 5.1A1.72 1.72 0 0 1 12 17z" />
           </g>
         </g>
-      </svg> -->
+      </svg>
     </div>
     <div ref="mainBox" class="mainBox">
       <p ref="heading" class="heading">{{this.textArr[this.currentSlideNum]}}</p>
@@ -72,7 +77,7 @@
     top: 0px;
     left: 0px;
     width: 100vw;
-    height: 700vh;
+    height: 100vh;
   }
 
   .mainBox {
@@ -138,6 +143,7 @@
     width: auto;
     height: 36px;
     fill: white;
+    z-index: 999;
     /* margin-top: auto; */
   }
 
@@ -145,6 +151,7 @@
     width: auto;
     height: 36px;
     fill: white;
+    z-index: 999;
     /* margin-bottom: auto; */
   }
 
@@ -239,10 +246,10 @@
       setTimeout(() => {
         this.initTilt()
       }, 1000);
-      window.addEventListener('scroll', this.isScrolling)
+      // window.addEventListener('scroll', this.isScrolling)
     },
     beforeDestroy: function () {
-      window.removeEventListener('scroll', this.isScrolling)
+      // window.removeEventListener('scroll', this.isScrolling)
     },
     methods: {
       setScrolling() {
@@ -265,7 +272,31 @@
         this.$refs.mainBox.style.opacity = '1'
       },
       scrollToPos(e) {
-        window.scrollTo(0, window.innerHeight*e + 1)
+        // window.scrollTo(0, window.innerHeight*e + 1)
+        if (e < 0) {
+          this.currentSlideNum = 0
+        } else {
+          if (e > 4) {
+            this.currentSlideNum = 4
+          } else {
+            this.currentSlideNum = e
+          }
+        }
+        console.log(this.$refs.navCont.children[1].children)
+        var counter = 0
+        this.$refs.navCont.children[1].children.forEach(el => {
+
+          if (el.classList.contains("active_menuItem")) {
+            if (counter != this.currentSlideNum) {
+              el.classList.remove('active_menuItem')
+            }
+          } else {
+            if (counter == this.currentSlideNum) {
+              el.classList.add('active_menuItem')
+            }
+          }
+          counter = counter + 1
+        })
       },
       isScrolling() {
         var counter = 0
