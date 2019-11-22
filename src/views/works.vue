@@ -72,7 +72,12 @@
       <img ref="mainImg" :src="this.imgArr[this.currentSlideNum]" class="mainImg" alt="">
     </div>
     <div class="scrollOverlay"></div>
-    <div ref="model" class="model"></div>
+    <div ref="model" class="model">
+      <div class="modelBox"></div>
+      <p class="hoverable modelBoxItem">Home</p>
+      <p class="hoverable modelBoxItem" style="text-decoration-line: line-through;text-decoration-color: gray;">Works</p>
+      <p class="hoverable modelBoxItem">Contact</p>
+    </div>
   </div>
 </template>
 
@@ -91,8 +96,24 @@
     background: transparent;
     width: 100vw;
     height: 100vh;
-    z-index: 998;
+    z-index: 970;
     display: none;
+  }
+  .modelBox {
+    position: fixed;
+    width: 50vw;
+    top: 20vh;
+    left: 25vw;
+    height: 60vh;
+    background: linear-gradient(45deg, #0575E6, #021B79);
+    z-index: 976;
+  }
+  .modelBoxItem {
+    font-size: 50px;
+    position: fixed;
+  }
+  .modelBoxItem{
+    top: 
   }
 
   .scrollOverlay {
@@ -326,6 +347,7 @@
         this.$refs.mainImg.style.display = 'none'
         this.$refs.navCont.style.display = 'none'
         this.$refs.mainBox.style.display = 'none'
+        this.$refs.model.style.display = 'flex'
         setTimeout(() => {
           this.$refs.closeIcon.style.display = 'block'
         }, 200);
@@ -335,6 +357,7 @@
         this.$refs.mainImg.style.display = 'block'
         this.$refs.navCont.style.display = 'flex'
         this.$refs.mainBox.style.display = 'flex'
+        this.$refs.model.style.display = 'none'
         setTimeout(() => {
           this.$refs.openIcon.style.display = 'block'
         }, 200);
