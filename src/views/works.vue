@@ -3,7 +3,7 @@
     <p class="hoverable contact_hoverable" @click="$router.push('works')"
       style="position: fixed;bottom: 3vh;font-weight: 500;padding: 0px;z-index:990;margin: 0px;writing-mode: vertical-rl;text-orientation: sideways;transform: rotate(180deg);">
       Contact</p>
-    <svg class="menuIcon hoverable_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <svg class="menuIcon hoverable_svg" ref="openIcon" @click="openModel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <g data-name="Layer 2">
         <g data-name="menu-2">
           <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
@@ -11,6 +11,15 @@
           <rect x="7" y="11" width="14" height="2" rx=".94" ry=".94" />
           <rect x="3" y="16" width="18" height="2" rx=".94" ry=".94" />
           <rect x="3" y="6" width="18" height="2" rx=".94" ry=".94" />
+        </g>
+      </g>
+    </svg>
+    <svg class="menuIcon hoverable_svg noDisplay" @click="closeModel" ref="closeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <g data-name="Layer 2">
+        <g data-name="close">
+          <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+          <path
+            d="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z" />
         </g>
       </g>
     </svg>
@@ -71,6 +80,20 @@
   * {
     cursor: none !important;
   }
+  .noDisplay {
+    display: none;
+  }
+
+  .model {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    background: transparent;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+    display: none;
+  }
 
   .scrollOverlay {
     position: absolute;
@@ -108,7 +131,7 @@
 
   .description {
     font-size: 24px;
-    color: #eee;
+    color: #ddd; 
     text-align: left;
     padding: 2vh 3vw 2vh 3vw;
     margin: 0px;
@@ -297,6 +320,24 @@
           }
           counter = counter + 1
         })
+      },
+      openModel () {
+        this.$refs.openIcon.style.display = 'none'
+        this.$refs.mainImg.style.display = 'none'
+        this.$refs.navCont.style.display = 'none'
+        this.$refs.mainBox.style.display = 'none'
+        setTimeout(() => {
+          this.$refs.closeIcon.style.display = 'block'
+        }, 200);
+      },
+      closeModel () {
+        this.$refs.closeIcon.style.display = 'none'
+        this.$refs.mainImg.style.display = 'block'
+        this.$refs.navCont.style.display = 'flex'
+        this.$refs.mainBox.style.display = 'flex'
+        setTimeout(() => {
+          this.$refs.openIcon.style.display = 'block'
+        }, 200);
       },
       isScrolling() {
         var counter = 0

@@ -126,36 +126,6 @@
               });
             });
 
-            // document.getElementsByClassName("refDotHoverable_alt").forEach(function (el) {
-            //   el.addEventListener("mouseover", function () {
-            //     self.cursorEnlarged = true;
-            //     self.toggleCursorSize();
-            //     el.style.marginTop = "65px"
-            //     el.style.marginBottom = "65px"
-            //   });
-            //   el.addEventListener("mouseout", function () {
-            //     self.cursorEnlarged = false;
-            //     self.toggleCursorSize();
-            //     el.style.marginTop = "40px"
-            //     el.style.marginBottom = "40px"
-            //   });
-            // });
-
-            // document.getElementsByClassName("refDotHoverable").forEach(function (el) {
-            //   el.addEventListener("mouseover", function () {
-            //     self.cursorEnlarged = true;
-            //     self.toggleCursorSize();
-            //     el.style.marginTop = "65px"
-            //     el.style.marginBottom = "65px"
-            //   });
-            //   el.addEventListener("mouseout", function () {
-            //     self.cursorEnlarged = false;
-            //     self.toggleCursorSize();
-            //     el.style.marginTop = "12px"
-            //     el.style.marginBottom = "12px"
-            //   });
-            // });
-
             document.getElementsByClassName("hoverable_svg").forEach(function (el) {
               el.addEventListener("mouseover", function () {
                 self.cursorEnlarged = true;
