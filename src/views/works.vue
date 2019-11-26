@@ -3,7 +3,11 @@
     <p class="hoverable contact_hoverable" @click="$router.push('works')"
       style="position: fixed;bottom: 3vh;font-weight: 500;padding: 0px;z-index:990;margin: 0px;writing-mode: vertical-rl;text-orientation: sideways;transform: rotate(180deg);">
       Contact</p>
-    <svg class="menuIcon hoverable_svg" ref="openIcon" @click="openModel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    
+    <!-- icons -->
+
+    <svg class="menuIcon hoverable_svg" ref="openIcon" @click="openModel" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24">
       <g data-name="Layer 2">
         <g data-name="menu-2">
           <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
@@ -14,7 +18,8 @@
         </g>
       </g>
     </svg>
-    <svg class="menuIcon hoverable_svg noDisplay" @click="closeModel" ref="closeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <svg class="menuIcon hoverable_svg noDisplay" @click="closeModel" ref="closeIcon" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24">
       <g data-name="Layer 2">
         <g data-name="close">
           <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
@@ -23,6 +28,19 @@
         </g>
       </g>
     </svg>
+
+    <!-- main content -->
+
+    <div class="row">
+      <div ref="mainBox" class="mainBox">
+        <p ref="heading" class="heading">{{this.textArr[this.currentSlideNum]}}</p>
+        <p ref="description" class="description">{{this.descriptionArr[this.currentSlideNum]}}</p>
+      </div>
+      <img ref="mainImg" :src="this.imgArr[this.currentSlideNum]" class="mainImg" alt="">
+    </div>
+
+    <!-- navcontent -->
+
     <div class="navCont" ref="navCont">
       <svg class="upArrow hoverable_svg" @click="scrollToPos(currentSlideNum-1)" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24">
@@ -63,19 +81,13 @@
         </g>
       </svg>
     </div>
-    <div ref="mainBox" class="mainBox">
-      <p ref="heading" class="heading">{{this.textArr[this.currentSlideNum]}}</p>
-      <p ref="description" class="description">{{this.descriptionArr[this.currentSlideNum]}}</p>
-    </div>
-    <div
-      style="position: fixed;left: 42vw;top: 0px;display: flex;flex-direction: row;width: 58vw;height: 100vh;z-index: 980;background: transparent;justify-content: center;">
-      <img ref="mainImg" :src="this.imgArr[this.currentSlideNum]" class="mainImg" alt="">
-    </div>
+
     <div class="scrollOverlay"></div>
     <div ref="model" class="model">
       <div class="modelBox"></div>
       <p class="hoverable modelBoxItem">Home</p>
-      <p class="hoverable modelBoxItem" style="text-decoration-line: line-through;text-decoration-color: gray;">Works</p>
+      <p class="hoverable modelBoxItem" style="text-decoration-line: line-through;text-decoration-color: gray;">Works
+      </p>
       <p class="hoverable modelBoxItem">Contact</p>
     </div>
   </div>
@@ -85,8 +97,21 @@
   * {
     cursor: none !important;
   }
+
   .noDisplay {
     display: none;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    z-index: 99;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    background: transparent;
   }
 
   .model {
@@ -99,6 +124,7 @@
     z-index: 970;
     display: none;
   }
+
   .modelBox {
     position: fixed;
     width: 50vw;
@@ -108,12 +134,12 @@
     background: linear-gradient(45deg, #0575E6, #021B79);
     z-index: 976;
   }
+
   .modelBoxItem {
     font-size: 50px;
     position: fixed;
-  }
-  .modelBoxItem{
-    top: 
+    top: 10vh;
+    left: 40vw;
   }
 
   .scrollOverlay {
@@ -125,9 +151,7 @@
   }
 
   .mainBox {
-    position: fixed;
-    top: 8vh;
-    left: 2vw;
+    margin-left: 2vw;
     height: 84vh;
     width: 40vw;
     background: linear-gradient(45deg, #0575E6, #021B79);
@@ -137,6 +161,7 @@
     justify-content: center;
     opacity: 0;
     transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    align-self: center;
   }
 
   .heading {
@@ -152,7 +177,7 @@
 
   .description {
     font-size: 24px;
-    color: #ddd; 
+    color: #ddd;
     text-align: left;
     padding: 2vh 3vw 2vh 3vw;
     margin: 0px;
@@ -175,12 +200,13 @@
   }
 
   .mainImg {
-    height: 50vmin;
+    height: auto;
     align-self: center;
-    width: auto;
-    margin-left: -12vw;
+    width: 15vw;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     opacity: 0;
+    margin-left: 9.5vw;
+    /* transform: translateX(-7.5vw); */
   }
 
   .upArrow {
@@ -188,7 +214,6 @@
     height: 36px;
     fill: white;
     z-index: 999;
-    /* margin-top: auto; */
   }
 
   .downArrow {
@@ -196,22 +221,21 @@
     height: 36px;
     fill: white;
     z-index: 999;
-    /* margin-bottom: auto; */
   }
 
   .navCont {
-    position: fixed;
-    z-index: 999;
     background: transparent;
-    height: 100vh;
-    width: auto;
+    position: fixed;
     top: 0px;
-    right: 2vw;
+    right: 0vw;
+    height: 100vh;
+    width: 20vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-
+    margin-left: auto;
+    z-index: 999;
   }
 
   .menuItems {
@@ -342,7 +366,7 @@
           counter = counter + 1
         })
       },
-      openModel () {
+      openModel() {
         this.$refs.openIcon.style.display = 'none'
         this.$refs.mainImg.style.display = 'none'
         this.$refs.navCont.style.display = 'none'
@@ -352,7 +376,7 @@
           this.$refs.closeIcon.style.display = 'block'
         }, 200);
       },
-      closeModel () {
+      closeModel() {
         this.$refs.closeIcon.style.display = 'none'
         this.$refs.mainImg.style.display = 'block'
         this.$refs.navCont.style.display = 'flex'
