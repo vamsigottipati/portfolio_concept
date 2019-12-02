@@ -251,6 +251,8 @@
   @import url("https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i");
   @import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700");
   @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900");
+  @import url('https://fonts.googleapis.com/css?family=Esteban&display=swap');
+
 
   #app {
     /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */

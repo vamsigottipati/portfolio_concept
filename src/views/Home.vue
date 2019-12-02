@@ -327,12 +327,12 @@
 
   .contact_overlay {
     position: absolute;
-    width: 90px;
+    width: calc(35px + 4vw);
     height: 180px;
     /* background: linear-gradient(45deg, #CB356B, #BD3F32); */
     background: linear-gradient(45deg, #0575E6, #021B79);
     z-index: 980;
-    left: 38px;
+    left: calc(2vw);
     top: calc(410vh - 180px);
   }
 
@@ -354,7 +354,7 @@
     }
 
     .contact_overlay {
-      width: 70px;
+      width: calc(25px + 4vw);
       height: 160px;
       top: calc(410vh - 160px);
     }
@@ -384,7 +384,7 @@
     }
 
     .contact_overlay {
-      width: 55px;
+      width: calc(15px + 4vw);
       height: 140px;
       top: calc(410vh - 140px);
     }
