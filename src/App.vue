@@ -143,8 +143,8 @@
               el.addEventListener("mouseover", function () {
                 self.cursorEnlarged = true;
                 self.toggleCursorSize();
-                el.style.color = "black"
-                el.style.textDecorationColor = 'gray';
+                // el.style.color = "black"
+                // el.style.textDecorationColor = 'gray';
                 el.addEventListener("click", function () {
                   self.cursorEnlarged = false;
                   self.toggleCursorSize();
@@ -153,7 +153,7 @@
               el.addEventListener("mouseout", function () {
                 self.cursorEnlarged = false;
                 self.toggleCursorSize();
-                el.style.color = "grey"
+                // el.style.color = "white"
                 el.style.textDecorationColor = '#fff';
               });
               el.addEventListener("click", function () {

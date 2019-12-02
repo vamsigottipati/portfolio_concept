@@ -67,7 +67,7 @@
           Resume
           Parser </p>
         <p class="hoverable_alt menuItems" @click="scrollToPos(4)" style="text-align: center;align-self: center;">
-          Smart Car
+          Smart
           Parking </p>
       </div>
       <svg class="downArrow hoverable_svg" @click="scrollToPos(currentSlideNum+1)" xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +160,7 @@
     align-content: center;
     justify-content: center;
     opacity: 0;
-    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     align-self: center;
   }
 
@@ -172,17 +172,17 @@
     margin: 0px;
     font-weight: 500;
     opacity: 0;
-    transition: 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .description {
-    font-size: 24px;
+    font-size: 18px;
     color: #ddd;
     text-align: left;
     padding: 2vh 3vw 2vh 3vw;
     margin: 0px;
     opacity: 0;
-    transition: 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .contact_hoverable {
@@ -211,14 +211,14 @@
 
   .upArrow {
     width: auto;
-    height: 36px;
+    height: 24px;
     fill: white;
     z-index: 999;
   }
 
   .downArrow {
     width: auto;
-    height: 36px;
+    height: 24px;
     fill: white;
     z-index: 999;
   }
@@ -240,7 +240,7 @@
 
   .menuItems {
     color: grey;
-    font-size: 22px;
+    font-size: 18px;
     text-decoration: none;
     text-decoration-color: #fff;
     transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -259,10 +259,10 @@
     transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     margin-top: 40px;
     margin-bottom: 40px;
-    text-decoration-line: line-through;
+    /* text-decoration-line: line-through; */
     /* text-decoration-color: #fff; */
     text-decoration-style: solid;
-    color: gray;
+    color: white;
   }
 
   @media screen and (max-width: 768px) {}
@@ -302,7 +302,7 @@
           `SARC`,
           `Resume  Builder`,
           `Resume Parser`,
-          `Smart Car Parking`
+          `Smart Parking`
         ],
         imgArr: [require('../assets/hash.png'), require('../assets/sarc.png'), require('../assets/builder.png'), require('../assets/parser.png'), require('../assets/hash.png')],
         currentSlideNum: 0
