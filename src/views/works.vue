@@ -33,10 +33,10 @@
 
     <div class="row">
       <div ref="mainBox" class="mainBox">
-        <p ref="heading" class="heading">{{this.textArr[this.currentSlideNum]}}</p>
-        <p ref="description" class="description">{{this.descriptionArr[this.currentSlideNum]}}</p>
+        <p ref="heading" class="heading">{{textArr[currentSlideNum]}}</p>
+        <p ref="description" class="description">{{descriptionArr[currentSlideNum]}}</p>
       </div>
-      <img ref="mainImg" :src="this.imgArr[this.currentSlideNum]" class="mainImg" alt="">
+      <img ref="mainImg" :src="imgArr[currentSlideNum]" class="mainImg" alt="">
     </div>
 
     <!-- navcontent -->
@@ -316,7 +316,7 @@
       }, 1000);
       // window.addEventListener('scroll', this.isScrolling)
     },
-    beforeDestroy: function () {
+    beforeUnmount: function () {
       // window.removeEventListener('scroll', this.isScrolling)
     },
     methods: {

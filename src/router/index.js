@@ -1,13 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import test from '../views/test.vue'
 import works from '../views/works.vue'
-
 import NProgress from 'nprogress'
-
-
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -21,26 +16,25 @@ const routes = [
     component: test
   },
   {
-    path: '*',
-    redirect: Home
-  },
-  {
     path: '/works',
     name: 'works',
     component: works
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior() {
-    return { x: 0, y: 0 };
+    return { top: 0 }
   },
   routes
 })
 
-router.beforeResolve((to,_, next) => {
+router.beforeResolve((to, _, next) => {
   if (to.name) {
     NProgress.start()
   }
@@ -50,6 +44,5 @@ router.beforeResolve((to,_, next) => {
 router.afterEach(() => {
   NProgress.done()
 })
-
 
 export default router

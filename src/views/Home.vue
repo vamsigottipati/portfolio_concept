@@ -74,7 +74,7 @@
       this.seTfontSize()
       document.body.scrollTop = 0
     },
-    beforeDestroy: function () {
+    beforeUnmount: function () {
       window.removeEventListener('mousemove', this.mouseIsMoving);
       window.removeEventListener("scroll", this.mouseIsScrolling);
       var el = this.$refs.home_cont,
